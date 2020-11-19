@@ -1,80 +1,117 @@
 <div class= "container">
-  <label for="SfOrg">Select SalesForce Org</label>
-  
-  <br>
-
-  <p-dropdown [options]="orgs" id="SfOrg" ngModel name="SfOrg" [(ngModel)]="selectedOrg" optionLabel="nick_name" [filter]="true" placeholder="Choose SalesForce Org">
-    <ng-template pTemplate="selectedItem">
-        <div class="orgs-item orgs-item-value"  *ngIf="selectedOrg">
-          <div>{{selectedOrg.nick_name}} | {{selectedOrg.org_label}}</div>
-        </div>
-    </ng-template>
-    <ng-template let-org pTemplate="item" >
-        <div class="orgs-item" >
-            <div >{{org.value.nick_name}} | {{org.value.org_label}}</div>
-        </div>
-    </ng-template>
-  </p-dropdown>
-
-  <br>
-
-  <label for="GitAccount">Select Git Account</label>
-  
-  <br>
-
-  <p-dropdown (onChange)="onChangeGitacc(selectedAcc)" [options]="gitaccs" ngModel name="gitaccs" [(ngModel)]="selectedAcc" optionLabel="username" [filter]="true" placeholder="Choose Git Account">
-  <ng-template pTemplate="selectedItem">
-    <div class="gitaccs-item gitaccs-item-value"  *ngIf="selectedAcc">
-      <div>{{selectedAcc.username}} | {{selectedAcc.id}} </div>
+  <div class = "row">
+    <div class = "col">
+      <label for="SfOrg" >Select SalesForce Org</label>
+        <p-dropdown [options]="orgs" id="SfOrg" ngModel name="SfOrg" [(ngModel)]="selectedOrg" optionLabel="nick_name" [filter]="true" placeholder="Choose SalesForce Org" [style]="{'width':'25%'}" [style]="{'max-width':'100%','width': '100%'}">
+          <ng-template pTemplate="selectedItem">
+              <div class="orgs-item orgs-item-value"  *ngIf="selectedOrg">
+                <div>{{selectedOrg.nick_name}} | {{selectedOrg.org_label}}</div>
+              </div>
+          </ng-template>
+          <ng-template let-org pTemplate="item" >
+              <div class="orgs-item" >
+                  <div >{{org.value.nick_name}} | {{org.value.org_label}}</div>
+              </div>
+          </ng-template>
+        </p-dropdown>
     </div>
-  </ng-template>
-  <ng-template let-gitacc pTemplate="item" >
-    <div class="gitacc-item" >
-        <div >{{gitacc.value.username}} | {{gitacc.value.id}}</div>
+    <div class = "col">
+      <label for="GitAccount">Select Git Account</label>
+      <p-dropdown (onChange)="onChangeGitacc(selectedAcc)" [options]="gitaccs" ngModel name="gitaccs" [(ngModel)]="selectedAcc" optionLabel="username" [filter]="true" placeholder="Choose Git Account" [style]="{'max-width':'100%','width': '100%'}">
+      <ng-template pTemplate="selectedItem">
+        <div class="gitaccs-item gitaccs-item-value"  *ngIf="selectedAcc">
+          <div>{{selectedAcc.username}} | {{selectedAcc.id}} </div>
+        </div>
+      </ng-template>
+      <ng-template let-gitacc pTemplate="item" >
+        <div class="gitacc-item" >
+            <div >{{gitacc.value.username}} | {{gitacc.value.id}}</div>
+        </div>
+      </ng-template>
+      </p-dropdown>
+      
+      <br>
+
+      <hr>
+      
+      <label for="GitRepo">Select Repository</label>
+      
+      <br>
+      
+      <p-dropdown [options]="repos" [(ngModel)]="selectedRepo" ngModel name="gitaccs" optionLabel="repoName" [filter]="true" placeholder="Choose Repository" [style]="{'max-width':'100%','width': '100%'}">
+      <ng-template pTemplate="selectedItem">
+      <div class="repos-item repos-item-value"   *ngIf="selectedRepo">
+        <div>{{selectedRepo.repoName}}</div>
+      </div>
+      </ng-template>
+      <ng-template let-repo pTemplate="item"  >
+      <div class="repos-item" >
+          <div >{{repo.value.repoName}}</div>
+      </div>
+      </ng-template>
+      </p-dropdown>
+
+      <br>
+      
+      <br>
     </div>
-  </ng-template>
-  </p-dropdown>
-  
-  <br>
-  
-  <label for="GitRepo">Select Repository</label>
-  
-  <br>
-  
-  <p-dropdown [options]="repos" [(ngModel)]="selectedRepo" ngModel name="gitaccs" optionLabel="repoName" [filter]="true" placeholder="Choose repository">
-  <ng-template pTemplate="selectedItem">
-  <div class="repos-item repos-item-value"   *ngIf="selectedRepo">
-    <div>{{selectedRepo.repoName}}</div>
   </div>
-  </ng-template>
-  <ng-template let-repo pTemplate="item"  >
-  <div class="repos-item" >
-      <div >{{repo.value.repoName}}</div>
+  <div class = "row">
+    <div class="col md-12">
+      <div class="buttons" (click)="showModalDialog()">
+        <button class="blob-btn" >
+          Perform Commit
+          <span class="blob-btn__inner">
+            <span class="blob-btn__blobs">
+              <span class="blob-btn__blob"></span>
+              <span class="blob-btn__blob"></span>
+              <span class="blob-btn__blob"></span>
+              <span class="blob-btn__blob"></span>
+            </span>
+          </span>
+        </button>
+            
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
+            <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+          </filter>
+        </defs>
+      </svg>
+    </div>
+    </div>
+    
   </div>
-  </ng-template>
-  </p-dropdown>
+    
 
   
+
   <br>
+
   
-  <br>
   
-  <input type="text" pInputText ngModel name="commit_msg" [(ngModel)]="commit_msg" placeholder = "Enter a commit message"/>
-        <div class="buttons" (click)="onSubmit()">
-            <button class="blob-btn" >
-              Perform Commit
-              <span class="blob-btn__inner">
-                <span class="blob-btn__blobs">
-                  <span class="blob-btn__blob"></span>
-                  <span class="blob-btn__blob"></span>
-                  <span class="blob-btn__blob"></span>
-                  <span class="blob-btn__blob"></span>
+ 
+        
+</div>
+<p-dialog [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
+    <textarea [rows]="5" [cols]="63" ngModel name="commit_msg" [(ngModel)]="commit_msg" placeholder = "Enter a commit message" pInputTextarea ></textarea>
+        <ng-template pTemplate="footer">
+          <div class="buttons1" (click)="onSubmit()">
+            <button class="blob1-btn submit" >
+              Ok
+              <span class="blob1-btn__inner ">
+                <span class="blob1-btn__blobs1 ">
+                  <span class="blob1-btn__blob1 "></span>
+                  <span class="blob1-btn__blob1 "></span>
+                  <span class="blob1-btn__blob1 "></span>
+                  <span class="blob1-btn__blob1 "></span>
                 </span>
               </span>
             </button>
-            <br/>
-            
-          
+                
           <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
             <defs>
               <filter id="goo">
@@ -85,4 +122,5 @@
             </defs>
           </svg>
         </div>
-</div>
+        </ng-template>
+</p-dialog>

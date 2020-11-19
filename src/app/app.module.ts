@@ -20,6 +20,7 @@ import { UserComponent } from './user/user.component';
 import {TabViewModule} from 'primeng/tabview';
 import {CardModule} from 'primeng/card';
 import { CookieService } from 'ngx-cookie-service';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CookieService } from 'ngx-cookie-service';
     PanelModule,
     ButtonModule,
     TabViewModule,
-    CardModule
+    CardModule,
+    DialogModule
   ],
   providers: [ CookieService],
   bootstrap: [AppComponent]
