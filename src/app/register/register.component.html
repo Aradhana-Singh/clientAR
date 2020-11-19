@@ -1,0 +1,26 @@
+<label for="SfOrg">SalesForce Org List</label>
+<a class="btn btn-primary" href="https://login.salesforce.com/services/oauth2/authorize?client_id=3MVG9n_HvETGhr3C21YA3Wd8zCW4pR2Ir9LH5wJcDYepa5rbaz8dUlP.TUncSKKDzBNIPfy98l.e4LWDF.3St&redirect_uri=http://localhost:8080/new-org&response_type=code&prompt=login&display=popup" role="button">+</a>
+<p-listbox id = "SfOrg"[options]="orgs" ngModel name="orgs" [(ngModel)]="selectedOrg" [metaKeySelection]="false"
+	[filter]="true" optionLabel="nick_name" [listStyle]="{'max-height':'250px'}" [style]="{'width':'25%'}"
+	styleClass="blue-panel">
+	<ng-template let-org pTemplate="item">
+		<div class="org-item">
+			<div>{{org.value.nick_name}}</div>
+		</div>
+	</ng-template>
+</p-listbox>
+
+<label for="GitAcc">Git Account List</label>
+<p-button href="https://login.salesforce.com/services/oauth2/authorize?client_id=3MVG9n_HvETGhr3C21YA3Wd8zCW4pR2Ir9LH5wJcDYepa5rbaz8dUlP.TUncSKKDzBNIPfy98l.e4LWDF.3St&redirect_uri=http://localhost:8080/new-org&response_type=code&prompt=login&display=popup" (click)="onRegisterGitAcc()" icon="pi pi-plus"></p-button>
+<p-listbox id = "GitAcc" [options]="gitaccs" ngModel name="gitaccs" [(ngModel)]="selectedAcc" [metaKeySelection]="false"
+	[filter]="true" optionLabel="username" [listStyle]="{'max-height':'250px'}" [style]="{'width':'25%'}">
+	<ng-template let-gitacc pTemplate="item">
+		<div class="gitaccs-item">
+			<div>{{gitacc.value.username}}</div>
+		</div>
+	</ng-template>
+</p-listbox>
+<!-- <p-panel header="Custom Header" styleClass="dark-panel">
+	hkfse
+</p-panel> -->
+

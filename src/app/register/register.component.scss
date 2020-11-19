@@ -1,5 +1,12 @@
 .container{
     margin-top: 20px;
 }
-
-    
+.p-listbox .p-listbox-header {
+    padding: 0.5rem 1rem;
+    border-bottom: 0 none;
+    color: #495057;
+    background: blue;
+    margin: 0;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}

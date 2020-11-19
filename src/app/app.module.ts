@@ -10,10 +10,12 @@ import { CommitComponent } from './commit/commit.component';
 import { RegisterComponent } from './register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
-
+import {ListboxModule} from 'primeng/listbox';
 import {DropdownModule} from 'primeng/dropdown';
 import {ReactiveFormsModule } from '@angular/forms';
 import {InputTextModule} from 'primeng/inputtext';
+import {PanelModule} from 'primeng/panel';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,10 @@ import {InputTextModule} from 'primeng/inputtext';
     DropdownModule,
     FormsModule,
     ReactiveFormsModule,
-    InputTextModule
+    InputTextModule,
+    ListboxModule,
+    PanelModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

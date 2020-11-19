@@ -3,7 +3,7 @@
   
   <br>
 
-  <p-dropdown [options]="orgs" id="SfOrg" ngModel name="SfOrg" [(ngModel)]="selectedOrg" optionLabel="org_id" [filter]="true" placeholder="Choose SalesForce Org">
+  <p-dropdown [options]="orgs" id="SfOrg" ngModel name="SfOrg" [(ngModel)]="selectedOrg" optionLabel="nick_name" [filter]="true" placeholder="Choose SalesForce Org">
     <ng-template pTemplate="selectedItem">
         <div class="orgs-item orgs-item-value"  *ngIf="selectedOrg">
           <div>{{selectedOrg.nick_name}} | {{selectedOrg.org_label}}</div>
@@ -22,7 +22,7 @@
   
   <br>
 
-  <p-dropdown (onChange)="onChangeGitacc(selectedAcc)" [options]="gitaccs" [(ngModel)]="selectedAcc" optionLabel="id" [filter]="true" placeholder="Choose Git Account">
+  <p-dropdown (onChange)="onChangeGitacc(selectedAcc)" [options]="gitaccs" ngModel name="gitaccs" [(ngModel)]="selectedAcc" optionLabel="username" [filter]="true" placeholder="Choose Git Account">
   <ng-template pTemplate="selectedItem">
     <div class="gitaccs-item gitaccs-item-value"  *ngIf="selectedAcc">
       <div>{{selectedAcc.username}} | {{selectedAcc.id}} </div>
@@ -41,7 +41,7 @@
   
   <br>
   
-  <p-dropdown [options]="repos" [(ngModel)]="selectedRepo" optionLabel="repoName" [filter]="true" placeholder="Choose repository">
+  <p-dropdown [options]="repos" [(ngModel)]="selectedRepo" ngModel name="gitaccs" optionLabel="repoName" [filter]="true" placeholder="Choose repository">
   <ng-template pTemplate="selectedItem">
   <div class="repos-item repos-item-value"   *ngIf="selectedRepo">
     <div>{{selectedRepo.repoName}}</div>
