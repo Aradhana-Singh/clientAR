@@ -19,6 +19,7 @@ import { ButtonModule } from 'primeng/button';
 import { UserComponent } from './user/user.component';
 import {TabViewModule} from 'primeng/tabview';
 import {CardModule} from 'primeng/card';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import {CardModule} from 'primeng/card';
     TabViewModule,
     CardModule
   ],
-  providers: [],
+  providers: [ CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
