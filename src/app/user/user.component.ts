@@ -29,7 +29,7 @@ export class UserComponent implements OnInit {
     this.http.post<any>(commiturl,payload).subscribe(
       data => {
         this.cookieService.set("user_id", data);
-        if(data == "1")
+        if(data != "-1")
         {
           alert("Login Successful");
         }
@@ -38,6 +38,23 @@ export class UserComponent implements OnInit {
         console.error('Error', error);
     }
     );
+  }
+
+  signup(){
+    let payload = {
+      "first_name": this.firstName,
+      "last_name": this.lastName,
+      "email": this.email,
+      "password": this.password
+    };
+    let commiturl = 'http://localhost:8080/sign-up';
+    this.http.post<any>(commiturl,payload).subscribe(
+      data => {
+        this.cookieService.set("user_id", data.id);
+        console.log(data.id);
+          alert("Registration Successful");
+      }
+    ); 
   }
 
 
