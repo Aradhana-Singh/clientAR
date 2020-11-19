@@ -1,7 +1,8 @@
 .user{
     width: 25rem;
     margin:auto;
-    margin-top:5em;
+    margin-top:7rem;
+    // margin-left: 7rem;
 }
 
 :host {
@@ -14,9 +15,13 @@
             .p-card-content {
                 padding: 0rem !important;
             }
+
+            box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
         }
     }
 }
+
+
 
 // .p-card {
 //     background: #ffffff;

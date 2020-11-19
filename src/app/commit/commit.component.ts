@@ -18,6 +18,7 @@ interface Repo{
   templateUrl: './commit.component.html',
   styleUrls: ['./commit.component.scss']
 })
+
 export class CommitComponent implements OnInit {
   public listrepourl ='http://localhost:8080/list-repos/';
   public sfurl = 'http://localhost:8080/list-orgs';
