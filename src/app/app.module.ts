@@ -16,18 +16,19 @@ import {ReactiveFormsModule } from '@angular/forms';
 import {InputTextModule} from 'primeng/inputtext';
 import {PanelModule} from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
-import { DialogModule } from 'primeng/dialog';
-import {InputTextareaModule} from 'primeng/inputtextarea';
+import { UserComponent } from './user/user.component';
+import {TabViewModule} from 'primeng/tabview';
 import {CardModule} from 'primeng/card';
-
-
+import { DialogModule } from 'primeng/dialog';
+ 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
     CommitComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -42,11 +43,11 @@ import {CardModule} from 'primeng/card';
     ListboxModule,
     PanelModule,
     ButtonModule,
-    DialogModule,
-    InputTextareaModule,
-    CardModule
+    TabViewModule,
+    CardModule,
+    DialogModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
