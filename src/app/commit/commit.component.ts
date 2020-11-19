@@ -32,6 +32,7 @@ export class CommitComponent implements OnInit {
   public selectedOrg;
   public GitRepoUrl; 
   public commit_msg;
+  displayModal: boolean;
   
   onSubmit(){
     let payload = {
@@ -45,6 +46,7 @@ export class CommitComponent implements OnInit {
       data => console.log('Success',data),
       error => console.error('Error', error)
     );
+    this.displayModal = false;
 
   }
 
@@ -72,4 +74,8 @@ export class CommitComponent implements OnInit {
       this.gitaccs = data;
     })
   } 
+  showModalDialog() {
+    this.displayModal = true;
+  }
+
 }
