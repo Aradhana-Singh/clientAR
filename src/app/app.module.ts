@@ -19,7 +19,9 @@ import { ButtonModule } from 'primeng/button';
 import { UserComponent } from './user/user.component';
 import {TabViewModule} from 'primeng/tabview';
 import {CardModule} from 'primeng/card';
+import { CookieService } from 'ngx-cookie-service';
 import { DialogModule } from 'primeng/dialog';
+import {InputTextareaModule} from 'primeng/inputtextarea';
  
 @NgModule({
   declarations: [
@@ -45,9 +47,10 @@ import { DialogModule } from 'primeng/dialog';
     ButtonModule,
     TabViewModule,
     CardModule,
-    DialogModule
+    DialogModule,
+    InputTextareaModule
   ],
-  providers: [ ],
+  providers: [ CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
