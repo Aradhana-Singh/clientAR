@@ -18,8 +18,9 @@ export class AuthService {
 
   login() {
     if (parseInt(this.cookieService.get("user_id")) != -1) {
+        console.log("I am logged in with user_id: ", this.cookieService.get("user_id"))
       this.loggedIn.next(true);
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
     }
   }
 

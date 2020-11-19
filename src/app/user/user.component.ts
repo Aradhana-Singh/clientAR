@@ -2,6 +2,7 @@ import { CloseScrollStrategy } from '@angular/cdk/overlay';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from '../auth/auth.service';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -14,7 +15,7 @@ export class UserComponent implements OnInit {
   public password:String;
   public loginBtn : boolean = false;
 
-  constructor(private http:HttpClient, private cookieService: CookieService) { }
+  constructor(private http:HttpClient, private cookieService: CookieService, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -30,6 +31,7 @@ export class UserComponent implements OnInit {
         this.cookieService.set("user_id", data);
         if(data != "-1")
         {
+          this.authService.login();
           alert("Login Successful");
         }
       },
