@@ -1,0 +1,28 @@
+<div class = "user">
+    <p-card>
+        <p-tabView>
+            <p-tabPanel header="Sign Up">
+                
+            </p-tabPanel>
+        
+            <p-tabPanel header="Login">
+                <br>
+                <span class="p-float-label">
+                    <input id="float-input" type="text" pInputText name="Email"  [(ngModel)] = "email" (blur) = "validateUser()"> 
+                    <label for="float-input">Email</label>
+                </span>
+                
+                
+                
+                <br>
+                <span class="p-float-label">
+                    <input id="float-input" type="text" pInputText name="password" [(ngModel)] = "password"> 
+                    <label for="float-input">Password</label>
+                </span>
+                <br>
+                <p-button label="Login" (click) = "login()" [disabled] = "login()"></p-button>
+            </p-tabPanel>
+            
+        </p-tabView>
+    </p-card>
+</div>

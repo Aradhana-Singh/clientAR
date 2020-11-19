@@ -16,8 +16,11 @@ import {ReactiveFormsModule } from '@angular/forms';
 import {InputTextModule} from 'primeng/inputtext';
 import {PanelModule} from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
+<<<<<<< HEAD
 import { DialogModule } from 'primeng/dialog';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+=======
+>>>>>>> d52c7ef5985d54ca2918bb4bc00e06c44642adef
 
 @NgModule({
   declarations: [
@@ -25,7 +28,6 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     HomeComponent,
     NavbarComponent,
     CommitComponent,
-    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +42,11 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     ListboxModule,
     PanelModule,
     ButtonModule,
+<<<<<<< HEAD
     DialogModule,
     InputTextareaModule
+=======
+>>>>>>> d52c7ef5985d54ca2918bb4bc00e06c44642adef
   ],
   providers: [],
   bootstrap: [AppComponent]
