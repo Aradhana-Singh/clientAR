@@ -17,7 +17,7 @@ export class AuthService {
   ) {}
 
   login() {
-    if (this.cookieService.check("user_id")) {
+    if (parseInt(this.cookieService.get("user_id")) != -1) {
       this.loggedIn.next(true);
       this.router.navigate(['/']);
     }
