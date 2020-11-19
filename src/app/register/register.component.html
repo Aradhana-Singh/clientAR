@@ -20,7 +20,7 @@
 	<div class = "row">
 		<div class="col-md-12">
 			<label for="GitAcc">Git Account List</label>
-			<a class="btn btn-primary" [style]= "{'float':'right'}" href="https://login.salesforce.com/services/oauth2/authorize?client_id=3MVG9n_HvETGhr3C21YA3Wd8zCW4pR2Ir9LH5wJcDYepa5rbaz8dUlP.TUncSKKDzBNIPfy98l.e4LWDF.3St&redirect_uri=http://localhost:8080/new-org&response_type=code&prompt=login&display=popup" role="button">+</a>
+			<a class="btn btn-primary" [style]= "{'float':'right'}" href="https://github.com/login/oauth/authorize?client_id=6754f8f63720d9edbe8b&redirect_uri=http://localhost:8080/new-repo&scope=repo" role="button">+</a>
 			<br>
 			<br>
 			<p-listbox id = "GitAcc" [options]="gitaccs" ngModel name="gitaccs" [(ngModel)]="selectedAcc" [metaKeySelection]="false"
