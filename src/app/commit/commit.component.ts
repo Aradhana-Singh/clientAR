@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 
 interface Org{
@@ -23,6 +22,7 @@ export class CommitComponent implements OnInit {
   public listrepourl ='http://localhost:8080/list-repos/';
   public sfurl = 'http://localhost:8080/list-orgs';
   public accurl = 'http://localhost:8080/list-git-accounts';
+  public commiturl = 'http://localhost:8080/git-commit';
   public orgs: string [] = [];
   public repos: string [] = [];
   public gitaccs: string [] = [];
@@ -32,22 +32,29 @@ export class CommitComponent implements OnInit {
   public selectedOrg;
   public GitRepoUrl; 
   public commit_msg;
+  public buttonClick = false;
+  public commitSuccess = false;
   displayModal: boolean;
   
   onSubmit(){
+    this.buttonClick = true;
     let payload = {
       "org_id":this.selectedOrg.org_id,
       "acc_id":this.selectedAcc.id,
       "repo_url": this.selectedRepo.repoUrl,
       "commit_msg": this.commit_msg
     };
-    let commiturl = 'http://localhost:3000/register'; 
-    this.http.post<any>(commiturl,payload).subscribe(
+    // let commiturl = 'http://localhost:3000/register'; 
+    this.http.post<any>(this.commiturl, payload,{
+      observe: 'response',
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      responseType: 'json',
+      withCredentials: true
+    }).subscribe(
       data => console.log('Success',data),
       error => console.error('Error', error)
     );
     this.displayModal = false;
-
   }
 
   onChangeGitacc(data){

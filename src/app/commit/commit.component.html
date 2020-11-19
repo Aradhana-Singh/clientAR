@@ -6,7 +6,7 @@
           <ng-template pTemplate="selectedItem">
               <div class="orgs-item orgs-item-value"  *ngIf="selectedOrg">
                 <div>{{selectedOrg.nick_name}} | {{selectedOrg.org_label}}</div>
-              </div>
+              </div> 
           </ng-template>
           <ng-template let-org pTemplate="item" >
               <div class="orgs-item" >
@@ -84,8 +84,14 @@
     </div>
     
   </div>
-    
-
+  
+  <br>
+  <div *ngIf = "buttonClick">
+    <div class="d-flex justify-content-center">
+      <strong>Commiting Changes... </strong>
+      <div class="spinner-border text-success ml-5" role="status" aria-hidden="true"></div>
+    </div>
+  </div>
   
 
   <br>
@@ -124,3 +130,4 @@
         </div>
         </ng-template>
 </p-dialog>
+
