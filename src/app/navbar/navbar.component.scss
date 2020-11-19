@@ -1,0 +1,20 @@
+
+
+.horizontalMenu:active{
+    border: black;
+}
+section{
+    padding:10px 5px;
+    background-color: rgb(32, 55, 77); 
+    color:white;
+}
+
+.nav-pills>li>a.active{
+    color:white;
+   /* padding-left:5px;
+    padding-right:5px; */
+}
+
+.nav-item a{
+    cursor:pointer;
+}
