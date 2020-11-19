@@ -97,7 +97,7 @@
 </div>
 <p-dialog [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false">
-    <textarea [rows]="5" [cols]="63" ngModel name="commit_msg" [(ngModel)]="commit_msg" placeholder = "Enter a commit message" pInputTextarea ></textarea>
+    <textarea [rows]="5" [cols]="80" ngModel name="commit_msg" [(ngModel)]="commit_msg" placeholder = "Enter a commit message" pInputTextarea ></textarea>
         <ng-template pTemplate="footer">
           <div class="buttons1" (click)="onSubmit()">
             <button class="blob1-btn submit" >
