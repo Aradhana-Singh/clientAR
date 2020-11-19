@@ -16,6 +16,8 @@ import {ReactiveFormsModule } from '@angular/forms';
 import {InputTextModule} from 'primeng/inputtext';
 import {PanelModule} from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { ButtonModule } from 'primeng/button';
     InputTextModule,
     ListboxModule,
     PanelModule,
-    ButtonModule
+    ButtonModule,
+    DialogModule,
+    InputTextareaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
