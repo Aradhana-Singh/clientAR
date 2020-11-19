@@ -10,8 +10,7 @@ import { CommitComponent } from './commit/commit.component';
 import { RegisterComponent } from './register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
-import { OrgComponent } from './commit/org/org.component';
-import { RestComponent } from './commit/service/rest/rest.component';
+
 import {DropdownModule} from 'primeng/dropdown';
 import {ReactiveFormsModule } from '@angular/forms';
 
@@ -21,9 +20,7 @@ import {ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     NavbarComponent,
     CommitComponent,
-    RegisterComponent,
-    OrgComponent,
-    RestComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
