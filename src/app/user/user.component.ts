@@ -19,7 +19,6 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  
   login(){
     let payload = {
       "email": this.email,

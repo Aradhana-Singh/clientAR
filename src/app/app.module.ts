@@ -22,7 +22,11 @@ import {CardModule} from 'primeng/card';
 import { CookieService } from 'ngx-cookie-service';
 import { DialogModule } from 'primeng/dialog';
 import {InputTextareaModule} from 'primeng/inputtextarea';
- 
+import { HomeLayoutComponent } from './layouts/app-layout.component';
+import { LoginLayoutComponent } from './layouts/login-layout.component';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './auth/auth.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +34,9 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     NavbarComponent,
     CommitComponent,
     RegisterComponent,
-    UserComponent
+    UserComponent,
+    HomeLayoutComponent,
+    LoginLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +56,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     DialogModule,
     InputTextareaModule
   ],
-  providers: [ CookieService],
+  providers: [ CookieService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
