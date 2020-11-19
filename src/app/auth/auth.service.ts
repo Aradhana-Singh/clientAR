@@ -9,6 +9,9 @@ export class AuthService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   get isLoggedIn() {
+
+    if(parseInt(this.cookieService.get("user_id")) != -1 )
+        this.loggedIn.next(true);
     return this.loggedIn.asObservable();
   }
 

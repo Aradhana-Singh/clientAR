@@ -32,7 +32,8 @@ const routes: Routes = [
       {path: 'commit', component: CommitComponent},
       {path: 'settings', component: RegisterComponent},
     ]
-  }
+  },
+  // {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
