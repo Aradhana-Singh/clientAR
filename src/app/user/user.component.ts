@@ -8,6 +8,8 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
+  public firstName;
+  public lastName;
   public email:String;
   public password:String;
   public loginBtn : boolean = false;
@@ -36,6 +38,7 @@ export class UserComponent implements OnInit {
     }
     );
   }
+
 
   disabled(){
     return this.loginBtn;
