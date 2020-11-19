@@ -1,50 +1,67 @@
 <div class= "container">
-  <label for="SfOrg">SF Org Select</label>
+  <label for="SfOrg">Select SalesForce Org</label>
+  
   <br>
-  <p-dropdown (onChange)="onChangeSfOrg(selectedOrg)" [options]="org" id="SfOrg" ngModel name="SfOrg" [(ngModel)]="selectedOrg" optionLabel="org_id" [filter]="true" placeholder="Select a Sf Org">
+
+  <p-dropdown [options]="orgs" id="SfOrg" ngModel name="SfOrg" [(ngModel)]="selectedOrg" optionLabel="org_id" [filter]="true" placeholder="Choose SalesForce Org">
     <ng-template pTemplate="selectedItem">
-        <div class="org-item org-item-value"  *ngIf="selectedOrg">
-          <div>{{selectedOrg.nick_name}}</div>
+        <div class="orgs-item orgs-item-value"  *ngIf="selectedOrg">
+          <div>{{selectedOrg.nick_name}} | {{selectedOrg.org_label}}</div>
         </div>
     </ng-template>
-    <ng-template let-og pTemplate="item" >
-        <div class="org-item" >
-            <div >{{og.value.nick_name}} {{og.value.org_label}}</div>
+    <ng-template let-org pTemplate="item" >
+        <div class="orgs-item" >
+            <div >{{org.value.nick_name}} | {{org.value.org_label}}</div>
         </div>
     </ng-template>
   </p-dropdown>
+
   <br>
-  <label for="GitAccount">Git Account Select</label>
+
+  <label for="GitAccount">Select Git Account</label>
+  
   <br>
-  <p-dropdown (onChange)="onChangeGitacc(selectedAcc)" [options]="gitacc" id="Gitacc" ngModel name="Gitacc" [(ngModel)]="selectedAcc" optionLabel="username" [filter]="true" placeholder="Select a GitId">
+
+  <p-dropdown (onChange)="onChangeGitacc(selectedAcc)" [options]="gitaccs" [(ngModel)]="selectedAcc" optionLabel="id" [filter]="true" placeholder="Choose Git Account">
   <ng-template pTemplate="selectedItem">
-    <div class="gitacc-item gitacc-item-value"  *ngIf="selectedAcc">
-      <div>{{selectedAcc.username}}</div>
+    <div class="gitaccs-item gitaccs-item-value"  *ngIf="selectedAcc">
+      <div>{{selectedAcc.username}} | {{selectedAcc.id}} </div>
     </div>
   </ng-template>
-  <ng-template let-og pTemplate="item" >
+  <ng-template let-gitacc pTemplate="item" >
     <div class="gitacc-item" >
-        <div >{{og.value.username}}</div>
+        <div >{{gitacc.value.username}} | {{gitacc.value.id}}</div>
     </div>
   </ng-template>
   </p-dropdown>
+  
   <br>
-  <label for="GitRepo">Git Repo Select</label>
+  
+  <label for="GitRepo">Select Repository</label>
+  
   <br>
-  <p-dropdown (onChange)="onChangeRepo(selectedRepo)" [options]="repo" id="GitRepo" ngModel name="RepoId" [(ngModel)]="selectedRepo" optionLabel="repoName" [filter]="true" placeholder="Select a Repo">
+  
+  <p-dropdown [options]="repos" [(ngModel)]="selectedRepo" optionLabel="repoName" [filter]="true" placeholder="Choose repository">
   <ng-template pTemplate="selectedItem">
-  <div class="repo-item repo-item-value"   *ngIf="selectedRepo">
+  <div class="repos-item repos-item-value"   *ngIf="selectedRepo">
     <div>{{selectedRepo.repoName}}</div>
   </div>
   </ng-template>
-  <ng-template let-re1 pTemplate="item"  >
-  <div class="repo-item" >
-      <div >{{re1.value.repoName}}</div>
+  <ng-template let-repo pTemplate="item"  >
+  <div class="repos-item" >
+      <div >{{repo.value.repoName}}</div>
   </div>
   </ng-template>
   </p-dropdown>
-        <div class="buttons">
-            <button class="blob-btn">
+
+  
+  <br>
+  
+  <br>
+  
+  <input type="text" pInputText ngModel name="commit_msg" [(ngModel)]="commit_msg" placeholder = "Enter a commit message"/>
+        <div class="buttons" (click)="onSubmit()">
+            <button class="blob-btn" >
               Perform Commit
               <span class="blob-btn__inner">
                 <span class="blob-btn__blobs">
@@ -56,6 +73,7 @@
               </span>
             </button>
             <br/>
+            
           
           <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
             <defs>
@@ -67,5 +85,4 @@
             </defs>
           </svg>
         </div>
-
 </div>

@@ -13,6 +13,7 @@ import {MatSelectModule} from '@angular/material/select';
 
 import {DropdownModule} from 'primeng/dropdown';
 import {ReactiveFormsModule } from '@angular/forms';
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     DropdownModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]
