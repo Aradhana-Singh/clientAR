@@ -7,3 +7,30 @@
     font-size: 4em;
     font-weight: 200;
 }
+
+.text-typing {
+    padding:0px;
+    font-size:12px;
+    font-family:monospace;
+    border-radius:50px;
+  }
+  .text-typing h1 {
+    margin-top:15px;
+    padding: 30px;
+    white-space:nowrap;
+    overflow:hidden;
+    animation:typing 4s steps(22,end) forwards,
+              blink 1s infinite;
+  }
+  @keyframes typing {
+    0% { width:0% }
+    100% { width:100% }
+  }
+  @keyframes blink {
+    0%,100% {
+      border-right:2px solid transparent;
+    }
+    50% {
+      border-right:2px solid #222;
+    }
+  }
