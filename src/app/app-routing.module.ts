@@ -9,6 +9,7 @@ import { LoginLayoutComponent } from './layouts/login-layout.component';
 import { AuthGuard } from './auth/auth.guard';
 import { Page404Component } from './page404/page404.component';
 import { FutureScopeComponent } from './future-scope/future-scope.component';
+import { DeployComponent } from './deploy/deploy.component';
 
 const routes: Routes = [
   {path: '' , redirectTo:"/home", pathMatch:"full" },
@@ -23,7 +24,8 @@ const routes: Routes = [
       {path: 'home', component: HomeComponent},
       {path: 'commit', component: CommitComponent},
       {path: 'settings', component: RegisterComponent},
-      {path: 'future', component: FutureScopeComponent}
+      {path: 'future', component: FutureScopeComponent},
+      {path: 'deploy', component:DeployComponent}
     ]
   },
   {

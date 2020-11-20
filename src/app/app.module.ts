@@ -28,6 +28,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
 import { Page404Component } from './page404/page404.component';
 import { FutureScopeComponent } from './future-scope/future-scope.component';
+import { DeployComponent } from './deploy/deploy.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { FutureScopeComponent } from './future-scope/future-scope.component';
     HomeLayoutComponent,
     LoginLayoutComponent,
     Page404Component,
-    FutureScopeComponent
+    FutureScopeComponent,
+    DeployComponent
   ],
   imports: [
     BrowserModule,
