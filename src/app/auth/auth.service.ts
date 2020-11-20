@@ -10,8 +10,8 @@ export class AuthService {
 
   get isLoggedIn() {
 
-    if(parseInt(this.cookieService.get("user_id")) != -1 )
-        this.loggedIn.next(true);
+    // if(parseInt(this.cookieService.get("user_id")) != -1 )
+    //     this.loggedIn.next(true);
     return this.loggedIn.asObservable();
   }
 
@@ -19,16 +19,25 @@ export class AuthService {
     private router: Router, private cookieService: CookieService
   ) {}
 
-  login() {
-    if (parseInt(this.cookieService.get("user_id")) != -1) {
-        console.log("I am logged in with user_id: ", this.cookieService.get("user_id"))
+  login(flag: number) {
+    if (parseInt(this.cookieService.get("user_id")) != -1 && this.cookieService.get("user_id") != "") {
+      console.log("I am logged in with user_id: ", this.cookieService.get("user_id"))
       this.loggedIn.next(true);
-      this.router.navigate(['/home']);
+      if(flag == 1)
+        this.router.navigate(['/home']);
     }
   }
 
   logout() {
-    this.loggedIn.next(false);
+    this.cookieService.set("user_id", "");
     this.router.navigate(['/authenticate']);
+  }
+
+  isUserLoggedIn() {
+    if (parseInt(this.cookieService.get("user_id")) != -1 && this.cookieService.get("user_id") != "") {
+      console.log("I am logged in with user_id: ", this.cookieService.get("user_id"))
+      return true;
+    }
+    return false;
   }
 }

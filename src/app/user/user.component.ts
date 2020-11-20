@@ -1,6 +1,7 @@
 import { CloseScrollStrategy } from '@angular/cdk/overlay';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from '../auth/auth.service';
 @Component({
@@ -15,7 +16,7 @@ export class UserComponent implements OnInit {
   public password:String;
   public loginBtn : boolean = false;
 
-  constructor(private http:HttpClient, private cookieService: CookieService, private authService: AuthService) { }
+  constructor(private http:HttpClient, private cookieService: CookieService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -29,11 +30,12 @@ export class UserComponent implements OnInit {
     this.http.post<any>(commiturl,payload).subscribe(
       data => {
         this.cookieService.set("user_id", data);
-        if(data != "-1")
-        {
-          this.authService.login();
-          alert("Login Successful");
-        }
+        // if(data != "-1")
+        // {
+        //   this.authService.login(1);
+        //   // alert("Login Successful");
+        // }
+        this.router.navigate(['/home']);
       },
       error => {
         console.error('Error', error);
@@ -51,7 +53,7 @@ export class UserComponent implements OnInit {
     let commiturl = 'http://localhost:8080/sign-up';
     this.http.post<any>(commiturl,payload).subscribe(
       data => {
-        this.cookieService.set("user_id", data.id);
+        // this.cookieService.set("user_id", data.id);
         console.log(data.id);
           alert("Registration Successful");
       }

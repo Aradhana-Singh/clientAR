@@ -26,6 +26,8 @@ import { HomeLayoutComponent } from './layouts/app-layout.component';
 import { LoginLayoutComponent } from './layouts/login-layout.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
+import { Page404Component } from './page404/page404.component';
+import { FutureScopeComponent } from './future-scope/future-scope.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { AuthService } from './auth/auth.service';
     RegisterComponent,
     UserComponent,
     HomeLayoutComponent,
-    LoginLayoutComponent
+    LoginLayoutComponent,
+    Page404Component,
+    FutureScopeComponent
   ],
   imports: [
     BrowserModule,

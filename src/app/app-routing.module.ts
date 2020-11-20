@@ -7,12 +7,25 @@ import {RegisterComponent} from './register/register.component';
 import { UserComponent } from './user/user.component';
 import { LoginLayoutComponent } from './layouts/login-layout.component';
 import { AuthGuard } from './auth/auth.guard';
+import { Page404Component } from './page404/page404.component';
+import { FutureScopeComponent } from './future-scope/future-scope.component';
 
 const routes: Routes = [
   {path: '' , redirectTo:"/home", pathMatch:"full" },
   // {path: 'home', component: HomeComponent,  canActivate: [AuthGuard]},
   
   // {path: 'authenticate', component: UserComponent},
+  {
+    path: '',
+    component: HomeLayoutComponent,
+    // canActivate: [AuthGuard],
+    children: [
+      {path: 'home', component: HomeComponent},
+      {path: 'commit', component: CommitComponent},
+      {path: 'settings', component: RegisterComponent},
+      {path: 'future', component: FutureScopeComponent}
+    ]
+  },
   {
     path: '',
     component: LoginLayoutComponent,
@@ -23,17 +36,8 @@ const routes: Routes = [
       }
     ]
   },
-  {
-    path: '',
-    component: HomeLayoutComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {path: 'home', component: HomeComponent},
-      {path: 'commit', component: CommitComponent},
-      {path: 'settings', component: RegisterComponent},
-    ]
-  },
-  // {path: '**', component: PageNotFoundComponent}
+  
+  {path: '**', component: Page404Component}
 ];
 
 @NgModule({
