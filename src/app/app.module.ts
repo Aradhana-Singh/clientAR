@@ -26,6 +26,7 @@ import { HomeLayoutComponent } from './layouts/app-layout.component';
 import { LoginLayoutComponent } from './layouts/login-layout.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
+import { DeployComponent } from './deploy/deploy.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AuthService } from './auth/auth.service';
     RegisterComponent,
     UserComponent,
     HomeLayoutComponent,
-    LoginLayoutComponent
+    LoginLayoutComponent,
+    DeployComponent
   ],
   imports: [
     BrowserModule,

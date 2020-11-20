@@ -35,6 +35,7 @@ export class CommitComponent implements OnInit {
   public commit_msg;
   public buttonClick = false;
   public commitSuccess = false;
+  public success = false;
   displayModal: boolean;
   
   onSubmit(){
@@ -52,7 +53,10 @@ export class CommitComponent implements OnInit {
       responseType: 'json',
       withCredentials: true
     }).subscribe(
-      data => console.log('Success',data),
+      data => {
+        this.buttonClick = false;
+        this.success = true;
+      },
       error => console.error('Error', error)
     );
     this.displayModal = false;
