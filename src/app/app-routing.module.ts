@@ -7,6 +7,7 @@ import {RegisterComponent} from './register/register.component';
 import { UserComponent } from './user/user.component';
 import { LoginLayoutComponent } from './layouts/login-layout.component';
 import { AuthGuard } from './auth/auth.guard';
+import { DeployComponent } from './deploy/deploy.component';
 
 const routes: Routes = [
   {path: '' , redirectTo:"/home", pathMatch:"full" },
@@ -31,6 +32,7 @@ const routes: Routes = [
       {path: 'home', component: HomeComponent},
       {path: 'commit', component: CommitComponent},
       {path: 'settings', component: RegisterComponent},
+      {path: 'deploy', component:DeployComponent}
     ]
   }
 ];
