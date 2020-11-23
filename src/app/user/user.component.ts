@@ -23,13 +23,14 @@ export class UserComponent implements OnInit {
   
   login(){
     let payload = {
-      "email": this.email,
+      "username": this.email,
       "password": this.password
     };
     let commiturl = 'http://localhost:8080/user/login'; 
     this.http.post<any>(commiturl,payload).subscribe(
       data => {
-        this.cookieService.set("user_id", data.user_id);
+        this.cookieService.set("token",data.token);
+        console.log(data.token);
         // if(data != "-1")
         // {
         //   this.authService.login(1);
