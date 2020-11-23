@@ -19,13 +19,13 @@ const routes: Routes = [
   {
     path: '',
     component: HomeLayoutComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
-      {path: 'home', component: HomeComponent},
-      {path: 'commit', component: CommitComponent},
-      {path: 'settings', component: RegisterComponent},
-      {path: 'future', component: FutureScopeComponent},
-      {path: 'deploy', component:DeployComponent}
+      {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+      {path: 'commit', component: CommitComponent, canActivate: [AuthGuard]},
+      {path: 'settings', component: RegisterComponent, canActivate: [AuthGuard]},
+      {path: 'future', component: FutureScopeComponent, canActivate: [AuthGuard]},
+      {path: 'deploy', component:DeployComponent, canActivate: [AuthGuard]}
     ]
   },
   {

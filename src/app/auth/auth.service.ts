@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 // import { User } from './user';
 import { CookieService } from 'ngx-cookie-service';
 
+
 @Injectable()
 export class AuthService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -29,13 +30,16 @@ export class AuthService {
   }
 
   logout() {
-    this.cookieService.set("user_id", "");
+    this.cookieService.delete("token", "/");
     this.router.navigate(['/authenticate']);
   }
 
   isUserLoggedIn() {
-    if (parseInt(this.cookieService.get("user_id")) != -1 && this.cookieService.get("user_id") != "") {
-      console.log("I am logged in with user_id: ", this.cookieService.get("user_id"))
+    // if (parseInt(this.cookieService.get("user_id")) != -1 && this.cookieService.get("user_id") != "") {
+    console.log(this.cookieService.get("token"));
+
+    if(this.cookieService.get("token")) { 
+      console.log("I am logged in with user_id: ", this.cookieService.get("token"));
       return true;
     }
     return false;
