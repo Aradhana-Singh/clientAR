@@ -19,13 +19,7 @@ export class RegisterComponent implements OnInit {
    
   }
 
-  onRegisterOrg(){
-    
-  }
 
-  onRegisterGitAcc(){
-
-  }
 
 
   ngOnInit(): void {

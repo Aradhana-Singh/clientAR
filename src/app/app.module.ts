@@ -29,6 +29,7 @@ import { AuthService } from './auth/auth.service';
 import { Page404Component } from './page404/page404.component';
 import { FutureScopeComponent } from './future-scope/future-scope.component';
 import { DeployComponent } from './deploy/deploy.component';
+import {ProgressBarModule} from 'primeng/progressbar';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { DeployComponent } from './deploy/deploy.component';
     TabViewModule,
     CardModule,
     DialogModule,
-    InputTextareaModule
+    InputTextareaModule,
+    ProgressBarModule
   ],
   providers: [ CookieService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
