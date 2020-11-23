@@ -26,10 +26,10 @@ export class UserComponent implements OnInit {
       "email": this.email,
       "password": this.password
     };
-    let commiturl = 'http://localhost:8080/login'; 
+    let commiturl = 'http://localhost:8080/user/login'; 
     this.http.post<any>(commiturl,payload).subscribe(
       data => {
-        this.cookieService.set("user_id", data);
+        this.cookieService.set("user_id", data.user_id);
         // if(data != "-1")
         // {
         //   this.authService.login(1);
@@ -50,12 +50,12 @@ export class UserComponent implements OnInit {
       "email": this.email,
       "password": this.password
     };
-    let commiturl = 'http://localhost:8080/sign-up';
+    let commiturl = 'http://localhost:8080/user/sign-up';
     this.http.post<any>(commiturl,payload).subscribe(
       data => {
         // this.cookieService.set("user_id", data.id);
         console.log(data.id);
-          alert("Registration Successful");
+        alert("Registration Successful");
       }
     ); 
   }
@@ -67,7 +67,7 @@ export class UserComponent implements OnInit {
 
   validateUser(){
     console.log(this.password + " " + this.email);
-    let commiturl = 'http://localhost:8080/check-existence?email=' + this.email; 
+    let commiturl = 'http://localhost:8080/user/check-existence?email=' + this.email; 
     this.http.get<any>(commiturl).subscribe(
       data => {
         console.log('Success',data);

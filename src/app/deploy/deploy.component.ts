@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./deploy.component.scss']
 })
 export class DeployComponent implements OnInit {
-  public sfurl = 'http://localhost:8080/list-orgs';
-  public deployUrl = 'http://localhost:8080/deploy/';
+  public sfurl = 'http://localhost:8080/org/list-orgs';
+  public deployUrl = 'http://localhost:8080/git/deploy';
   public orgs: string [] = [];
   public repos: string [] = [];
   public gitaccs: string [] = [];

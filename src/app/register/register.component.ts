@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import {  Component, OnInit } from '@angular/core';
 
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,18 +12,10 @@ export class RegisterComponent implements OnInit {
   public gitaccs: string [] = [];
   public selectedOrg;
   public selectedAcc;
-  public sfurl = 'http://localhost:8080/list-orgs';
-  public accurl = 'http://localhost:8080/list-git-accounts';
+  public sfurl = 'http://localhost:8080/org/list-orgs';
+  public accurl = 'http://localhost:8080/git/list-accounts';
   constructor(private http:HttpClient) { 
    
-  }
-
-  onRegisterOrg(){
-    
-  }
-
-  onRegisterGitAcc(){
-
   }
 
 

@@ -20,10 +20,10 @@ interface Repo{
 })
 
 export class CommitComponent implements OnInit {
-  public listrepourl ='http://localhost:8080/list-repos/';
-  public sfurl = 'http://localhost:8080/list-orgs';
-  public accurl = 'http://localhost:8080/list-git-accounts';
-  public commiturl = 'http://localhost:8080/git-commit';
+  public listrepourl ='http://localhost:8080/git/list-repos/';
+  public sfurl = 'http://localhost:8080/org/list-orgs';
+  public accurl = 'http://localhost:8080/git/list-accounts';
+  public commiturl = 'http://localhost:8080/git/commit';
   public orgs: string [] = [];
   public repos: string [] = [];
   public gitaccs: string [] = [];
