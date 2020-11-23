@@ -37,6 +37,7 @@ export class CommitComponent implements OnInit {
   public commitSuccess = false;
   public success = false;
   displayModal: boolean;
+  file = null;
   
   onSubmit(){
     this.buttonClick = true;
@@ -88,6 +89,18 @@ export class CommitComponent implements OnInit {
   } 
   showModalDialog() {
     this.displayModal = true;
+  }
+
+  imageChoice(theEventFromHtml) {
+    this.file = theEventFromHtml.target.files[0];
+  }
+
+  sendFile() {
+    if (this.file !== null) {
+      const formdata: FormData = new FormData();
+      formdata.append('file', this.file);
+      this.http.post("http://localhost:8080/addFile", formdata, { observe: 'response', responseType: 'text'}).subscribe();
+    }
   }
 
 }
