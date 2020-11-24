@@ -29,6 +29,11 @@ export class AuthService {
     }
   }
 
+  getToken() 
+  {
+    return this.cookieService.get("token");
+  }
+
   logout() {
     this.cookieService.delete("token", "/");
     this.router.navigate(['/authenticate']);

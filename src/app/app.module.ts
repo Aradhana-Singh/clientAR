@@ -30,6 +30,8 @@ import { Page404Component } from './page404/page404.component';
 import { FutureScopeComponent } from './future-scope/future-scope.component';
 import { DeployComponent } from './deploy/deploy.component';
 import {ProgressBarModule} from 'primeng/progressbar';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { HTTP_INTERCEPTORS} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,11 @@ import {ProgressBarModule} from 'primeng/progressbar';
     InputTextareaModule,
     ProgressBarModule
   ],
-  providers: [ CookieService, AuthService, AuthGuard],
+  providers: [ CookieService, AuthService, AuthGuard, {
+    provide : HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi   : true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
