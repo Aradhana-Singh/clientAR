@@ -32,6 +32,7 @@ import { DeployComponent } from './deploy/deploy.component';
 import {ProgressBarModule} from 'primeng/progressbar';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { HTTP_INTERCEPTORS} from '@angular/common/http';
+import {FileUploadModule} from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { HTTP_INTERCEPTORS} from '@angular/common/http';
     CardModule,
     DialogModule,
     InputTextareaModule,
-    ProgressBarModule
+    ProgressBarModule,
+    FileUploadModule
   ],
   providers: [ CookieService, AuthService, AuthGuard, {
     provide : HTTP_INTERCEPTORS,

@@ -37,6 +37,7 @@ export class CommitComponent implements OnInit {
   public commitSuccess = false;
   public success = false;
   displayModal: boolean;
+  fileUploadModal: boolean;
   file = null;
   
   onSubmit(){
@@ -71,6 +72,11 @@ export class CommitComponent implements OnInit {
       this.repos = data;
     });
   }
+
+  onChangeOrg() {
+    this.showFileUpload();
+  }
+
   constructor(private http:HttpClient) { 
    
   }
@@ -87,8 +93,13 @@ export class CommitComponent implements OnInit {
       this.gitaccs = data;
     })
   } 
+
   showModalDialog() {
     this.displayModal = true;
+  }
+
+  showFileUpload() {
+    this.fileUploadModal = true;
   }
 
   imageChoice(theEventFromHtml) {
