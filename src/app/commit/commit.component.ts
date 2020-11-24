@@ -99,7 +99,7 @@ export class CommitComponent implements OnInit {
     if (this.file !== null) {
       const formdata: FormData = new FormData();
       formdata.append('file', this.file);
-      this.http.post("http://localhost:8080/addFile", formdata, { observe: 'response', responseType: 'text'}).subscribe();
+      this.http.post("http://localhost:8080/git/addFile", formdata,{headers:{skip:"true"}}).subscribe();
     }
   }
 
