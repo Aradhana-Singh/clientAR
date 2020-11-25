@@ -2,14 +2,14 @@
   <div class = "row">
     <div class = "col">
       <label for="SfOrg" >Select SalesForce Org</label>
-        <p-dropdown [options]="orgs" (onChange)="onChangeOrg()" id="SfOrg" ngModel name="SfOrg" [(ngModel)]="selectedOrg" optionLabel="nick_name" [filter]="true" placeholder="Choose SalesForce Org" [style]="{'width':'25%'}" [style]="{'max-width':'100%','width': '100%'}">
+        <p-dropdown [options]="orgs" id="SfOrg" ngModel name="SfOrg" [(ngModel)]="selectedOrg" optionLabel="nick_name" [filter]="true" placeholder="Choose SalesForce Org" [style]="{'width':'25%'}" [style]="{'max-width':'100%','width': '100%'}">
           <ng-template pTemplate="selectedItem">
               <div class="orgs-item orgs-item-value"  *ngIf="selectedOrg">
                 <div>{{selectedOrg.nick_name}} | {{selectedOrg.org_label}}</div>
               </div> 
           </ng-template>
           <ng-template let-org pTemplate="item" >
-              <div class="orgs-item" >
+              <div class="orgs-item" (click)="onChangeOrg()" >
                   <div >{{org.value.nick_name}} | {{org.value.org_label}}</div>
               </div>
           </ng-template>
@@ -139,12 +139,15 @@
     [draggable]="false" [resizable]="false">
     <!-- <textarea [rows]="5" [cols]="80" ngModel name="commit_msg" [(ngModel)]="commit_msg" placeholder = "Enter a commit message" pInputTextarea ></textarea> -->
     
-    <p-fileUpload name="myfile[]" url="./upload.php" accept=".xml" [auto]="true"></p-fileUpload>
+    <div class="upload-area">
+      <input type="file" (change)="fileChoice($event)"/>
+      <p>Drag your files here or click in this area.</p>
+    </div>
 
     <ng-template pTemplate="footer">
-          <div class="buttons1" (click)="onSubmit()">
+          <div class="buttons2" (click)="sendFile()">
             <button class="blob1-btn submit" >
-              Ok
+              Next
               <span class="blob1-btn__inner ">
                 <span class="blob1-btn__blobs1 ">
                   <span class="blob1-btn__blob1 "></span>

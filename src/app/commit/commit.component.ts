@@ -45,8 +45,9 @@ export class CommitComponent implements OnInit {
     let payload = {
       "org_id":this.selectedOrg.org_id,
       "acc_id":this.selectedAcc.id,
+      "repo_id": this.selectedRepo.repoId,
       "repo_url": this.selectedRepo.repoUrl,
-      "commit_msg": this.commit_msg
+      "commit_msg": this.commit_msg,
     };
     // let commiturl = 'http://localhost:3000/register'; 
     this.http.post<any>(this.commiturl, payload,{
@@ -102,7 +103,7 @@ export class CommitComponent implements OnInit {
     this.fileUploadModal = true;
   }
 
-  imageChoice(theEventFromHtml) {
+  fileChoice(theEventFromHtml) {
     this.file = theEventFromHtml.target.files[0];
   }
 
@@ -110,7 +111,15 @@ export class CommitComponent implements OnInit {
     if (this.file !== null) {
       const formdata: FormData = new FormData();
       formdata.append('file', this.file);
-      this.http.post("http://localhost:8080/git/addFile", formdata,{headers:{skip:"true"}}).subscribe();
+      formdata.append('org_id', this.selectedOrg.org_id);
+      this.http.post("http://localhost:8080/git/addFile", formdata,{headers:{skip:"true"}}).subscribe(
+        (data)=>{
+          console.log(data);
+        },
+        (err) => {
+          console.log(err); 
+        }
+      );
     }
   }
 
