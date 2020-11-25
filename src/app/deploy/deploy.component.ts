@@ -1,17 +1,61 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { ViewChild } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { map, tap, scan, mergeMap, throttleTime } from 'rxjs/operators';
+import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 
+
+const batchSize = 5;
 @Component({
   selector: 'app-deploy',
   templateUrl: './deploy.component.html',
   styleUrls: ['./deploy.component.scss']
 })
 export class DeployComponent implements OnInit {
+
+  @ViewChild(CdkVirtualScrollViewport)
+  viewport: CdkVirtualScrollViewport;
+  
+  theEnd = false;
+ 
+  offset = new BehaviorSubject(null);
+  infinite: Observable<any[]>;
+  go() {
+    this.viewport.scrollToIndex(23)
+  }
+
+  nextBatch(e, offset){
+    if(this.theEnd)
+    {
+      return;
+    }
+
+    const end = this.viewport.getRenderedRange().end;
+    const total = this.viewport.getDataLength();
+
+    if( end == total){
+      this.offset.next(offset);
+    } 
+  }
+
+  trackByIdx(i){
+    return i; 
+  }
+
+  getBatch(lastSeen: string){
+    return this.http.get<any>(this.commithistoryurl,{withCredentials:true});
+  }
+
+  
   public sfurl = 'http://localhost:8080/org/list-orgs';
+  public commithistoryurl = 'http://localhost:8080/git/commit-history';
   public deployUrl = 'http://localhost:8080/git/deploy';
   public orgs: string [] = [];
   public repos: string [] = [];
   public gitaccs: string [] = [];
+  public commithistory: string []= [];
   public accId;
   public selectedRepo;
   public orgId;
@@ -35,6 +79,7 @@ export class DeployComponent implements OnInit {
   }​​​​​
 
   constructor(private http:HttpClient) { 
+ 
    
   }
 
@@ -43,6 +88,12 @@ export class DeployComponent implements OnInit {
     let Sfresponse = this.http.get<any>(this.sfurl,{withCredentials:true});
     Sfresponse.subscribe((data)=>{
       this.orgs = data;
+    });
+
+    let Chresponse = this.http.get<any>(this.commithistoryurl,{withCredentials:true});
+    Chresponse.subscribe((data)=>{
+      this.commithistory = data;
+      console.log(data);
     });
   } 
 

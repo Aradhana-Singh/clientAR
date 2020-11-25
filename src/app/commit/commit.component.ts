@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 
 interface Org{
@@ -45,7 +46,9 @@ export class CommitComponent implements OnInit {
       "org_id":this.selectedOrg.org_id,
       "acc_id":this.selectedAcc.id,
       "repo_url": this.selectedRepo.repoUrl,
-      "commit_msg": this.commit_msg
+      "commit_msg": this.commit_msg,
+      "git_username": this.selectedAcc.username,
+      "repo_name": this.selectedAcc.repoName
     };
     // let commiturl = 'http://localhost:3000/register'; 
     this.http.post<any>(this.commiturl, payload,{
@@ -79,11 +82,13 @@ export class CommitComponent implements OnInit {
      
     let Sfresponse = this.http.get<any>(this.sfurl,{withCredentials:true});
     Sfresponse.subscribe((data)=>{
+      console.log(data);
       this.orgs = data;
     });
 
     let GitAccresponse = this.http.get<any>(this.accurl,{withCredentials: true});
     GitAccresponse.subscribe((data)=>{
+      console.log(data);
       this.gitaccs = data;
     })
   } 
@@ -102,5 +107,7 @@ export class CommitComponent implements OnInit {
       this.http.post("http://localhost:8080/git/addFile", formdata,{headers:{skip:"true"}}).subscribe();
     }
   }
+
+
 
 }

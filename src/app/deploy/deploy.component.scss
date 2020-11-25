@@ -1,5 +1,6 @@
 .container {
   margin-top: 9vh;
+  overflow-y: hidden; 
 }
 .buttons1 {
     margin-top: 15px;
@@ -125,3 +126,91 @@ svg{
  label{
      color: $blue;
  }
+
+ 
+//  .example-viewport {
+//   height: 200px;
+//   width: 200px;
+//   border: 1px solid black;
+// }
+
+// .example-dt {
+//   height: 30px;
+//   font-weight: bold;
+// }
+
+// .example-dd {
+//   height: 30px;
+// }
+cdk-virtual-scroll-viewport {
+  height: 65vh;
+  width: auto;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  list-style: none;
+  
+
+  li {
+    height: auto;
+    margin: 20px;
+    padding: 10px;
+    background: whitesmoke;
+    border-radius: 10px;
+
+    box-shadow: 2px 2px 2px 2px rgba($color: #888888, $alpha: 0.2);
+  }
+
+  // Bonus points
+  &::-webkit-scrollbar {
+    margin-left: 30px;
+    float: left;
+    // height: 75px;
+    width: 10px;
+    background: #fff;
+    overflow-y: scroll;
+    margin-bottom: 25px;
+    .cdk-virtual-scroll-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            height:30px;
+        }
+    }
+    .force-overflow {
+    min-height: 450px;
+    }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 5px;
+    margin-top:10px;
+    
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(202, 193, 181);
+    border-radius: 10px;
+    
+  }
+}
+
+.animate__animated.animate__slideInRight {
+  --animate-duration: 2s;
+}
+
+// .gkz-viewport {
+//   height: 100px;
+//   width: 200px;
+//   border: 1px solid black;
+//   .cdk-virtual-scroll-content-wrapper {
+//       display: flex;
+//       flex-direction: column;
+//   }
+//   .item {
+//       height: 19px;
+//       border-bottom: 1px dashed #aaa;
+//   }
+// }
+
