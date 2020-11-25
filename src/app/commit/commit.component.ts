@@ -50,7 +50,7 @@ export class CommitComponent implements OnInit {
       "repo_url": this.selectedRepo.repoUrl,
       "commit_msg": this.commit_msg,
       "git_username": this.selectedAcc.username,
-      "repo_name": this.selectedAcc.repoName
+      "repo_name": this.selectedRepo.repoName
     };
     // let commiturl = 'http://localhost:3000/register'; 
     this.http.post<any>(this.commiturl, payload,{
