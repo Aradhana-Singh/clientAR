@@ -100,7 +100,7 @@ export class DeployComponent implements OnInit {
 
   onDeploy(deployItem){
     let payload = {
-      "acc_id" : deployItem.acc_id,
+      "account_id" : deployItem.account_id,
       "org_id": deployItem.org_id,
       "repo_id": deployItem.repo_id,
       "commit_hash": deployItem.commit_hash,
