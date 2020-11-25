@@ -51,7 +51,7 @@ export class DeployComponent implements OnInit {
   
   public sfurl = 'http://localhost:8080/org/list-orgs';
   public commithistoryurl = 'http://localhost:8080/git/commit-history';
-  public deployUrl = 'http://localhost:8080/git/deploy';
+  public deployUrl = 'http://localhost:8080/git/test-deploy';
   public orgs: string [] = [];
   public repos: string [] = [];
   public gitaccs: string [] = [];
@@ -97,6 +97,28 @@ export class DeployComponent implements OnInit {
     });
   } 
 
+
+  onDeploy(deployItem){
+    let payload = {
+      "acc_id" : deployItem.acc_id,
+      "org_id": deployItem.org_id,
+      "repo_id": deployItem.repo_id,
+      "commit_hash": deployItem.commit_hash,
+      "repo_url" : deployItem.repo_url
+    }
+    this.http.post<any>(this.deployUrl, payload,{
+      observe: 'response',
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      responseType: 'json',
+      withCredentials: true
+    }).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => console.error('Error', error)
+    );
+
+  }
 }
 
 
