@@ -2,6 +2,7 @@
 @import '~primeicons/primeicons.css';
 @import '~primeng/resources/themes/saga-blue/theme.css';
 @import '~primeng/resources/primeng.min.css';
+@import '~animate.css/animate.min';
 
 .text-orange{
     color:#ff9f00;
@@ -27,3 +28,5 @@ body {
 label{
     color: #00a8eb;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
