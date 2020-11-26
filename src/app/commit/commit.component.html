@@ -1,6 +1,6 @@
 
 <div *ngIf = "buttonClick">
-  <p-progressBar mode="indeterminate" [style]="{'height': '0.2em','background-color':'#FFB266'}"></p-progressBar>
+  <p-progressBar mode="indeterminate"></p-progressBar>
 </div>
 
 <p-toast [baseZIndex]="5000"></p-toast>
@@ -114,6 +114,7 @@
  
         
 </div>
+
 <p-dialog [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false">
     <textarea [rows]="5" [cols]="80" ngModel name="commit_msg" [(ngModel)]="commit_msg" placeholder = "Enter a commit message" pInputTextarea ></textarea>
