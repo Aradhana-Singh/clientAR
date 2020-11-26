@@ -10,7 +10,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit, DoCheck {
+export class NavbarComponent implements OnInit {
   items: MenuItem[];
   getUser = "http://localhost:8080/user/get-user";
   public full_name = "";
@@ -34,9 +34,6 @@ export class NavbarComponent implements OnInit, DoCheck {
 
   ngOnInit(): void {
      this.getUserName();
-  }
-
-  ngDoCheck(): void {
     this.items = [
       {
         label: this.full_name
