@@ -3,11 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import {MenuItem, MessageService} from 'primeng/api';
 import { AuthService } from '../auth/auth.service';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  styleUrls: ['./user.component.scss'],
+  providers: [MessageService]
 })
 export class UserComponent implements OnInit {
   public firstName;
@@ -15,10 +17,16 @@ export class UserComponent implements OnInit {
   public email:String;
   public password:String;
   public loginBtn : boolean = false;
-
-  constructor(private http:HttpClient, private cookieService: CookieService, private authService: AuthService, private router: Router) { }
+  public signUpBtn : boolean = true;
+  items: MenuItem[];
+  constructor(private messageService: MessageService,private http:HttpClient, private cookieService: CookieService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.items = [
+      {label: 'Angular.io', icon: 'pi pi-info', url: 'http://angular.io'},
+      {separator:true},
+      {label: 'Setup', icon: 'pi pi-cog', routerLink: ['/setup']}
+  ];
   }
   
   login(){
@@ -31,20 +39,19 @@ export class UserComponent implements OnInit {
       data => {
         this.cookieService.set("token",data.token);
         console.log(data.token);
-        // if(data != "-1")
-        // {
-        //   this.authService.login(1);
-        //   // alert("Login Successful");
-        // }
-        this.router.navigate(['/home']);
+        this.messageService.add({severity: "success", summary:'Success', detail:'Successfully Logged in'});
+        setTimeout(() => {
+          this.router.navigate(['/home']);
+      }, 1000);
       },
       error => {
         console.error('Error', error);
+        this.messageService.add({severity: "error", summary:'Error', detail:'Invalid Credentials'});
     }
     );
   }
 
-  signup(){
+  signup(severity: string){
     let payload = {
       "first_name": this.firstName,
       "last_name": this.lastName,
@@ -73,15 +80,39 @@ export class UserComponent implements OnInit {
       data => {
         console.log('Success',data);
         if(data == "-1"){
-          alert("Invalid Email");
-          this.loginBtn = false;
+          // alert("Invalid Email");
+          this.loginBtn = true;
+          this.signUpBtn = true;
         }
         else{
-          this.loginBtn = true;
+          this.loginBtn = false;
+          this.signUpBtn = false;
         }
       },
       error => console.error('Error', error)
     );
     
+  }
+
+  save() {
+    
+    let payload = {
+      "first_name": this.firstName,
+      "last_name": this.lastName,
+      "email": this.email,
+      "password": this.password
+    };
+    let commiturl = 'http://localhost:8080/user/sign-up';
+    this.http.post<any>(commiturl,payload).subscribe(
+      data => {
+        // this.cookieService.set("user_id", data.id);
+        console.log(data.id);
+        this.messageService.add({severity: "success", summary:'Success', detail:'Successfully Signed Up'});
+      },
+      error => {
+        console.log(error);
+        this.messageService.add({severity: "error", summary:'Failed', detail:'Registration Failed'});
+      }
+    ); 
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { MessageService } from 'primeng/api';
 
 
 interface Org{
@@ -41,6 +42,8 @@ export class CommitComponent implements OnInit {
   fileUploadModal: boolean;
   file = null;
   
+  constructor(private messageService: MessageService,private http:HttpClient) { 
+  }
   onSubmit(){
     this.buttonClick = true;
     let payload = {
@@ -62,8 +65,14 @@ export class CommitComponent implements OnInit {
       data => {
         this.buttonClick = false;
         this.success = true;
+        this.messageService.add({severity: "success", summary:'Done', detail:'Commit Successful'});
       },
-      error => console.error('Error', error)
+      error => {
+        console.error('Error', error);
+        this.buttonClick = false;
+        this.messageService.add({severity: "error", summary:'Error', detail:'Something went wrong'});
+      }
+      
     );
     this.displayModal = false;
   }
@@ -79,10 +88,6 @@ export class CommitComponent implements OnInit {
 
   onChangeOrg() {
     this.showFileUpload();
-  }
-
-  constructor(private http:HttpClient) { 
-   
   }
 
   ngOnInit(): void {
@@ -120,11 +125,17 @@ export class CommitComponent implements OnInit {
       this.http.post("http://localhost:8080/git/addFile", formdata,{headers:{skip:"true"}}).subscribe(
         (data)=>{
           console.log(data);
+          this.messageService.add({severity: "success", summary:'File Uploaded'});
+          this.fileUploadModal = false;
         },
         (err) => {
           console.log(err); 
+          this.messageService.add({severity: "error", summary:'Error', detail:'Select Valid Manifest File'});
         }
       );
+    }
+    else{
+     this.messageService.add({severity: "error", summary:'Error', detail:'Select Valid Manifest File'});
     }
   }
 }
