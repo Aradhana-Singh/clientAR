@@ -12,12 +12,12 @@ export class AuthInterceptor implements HttpInterceptor
     }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-      console.log("Interceptor called");
-      if (req.headers.get("skip"))
-      {
-        req = req.clone({headers: req.headers.append("Authorization", `Bearer ${this.authService.getToken()}`)})
-        return next.handle(req);
-      }
+    console.log("Interceptor called");
+    if (req.headers.get("skip"))
+    {
+      req = req.clone({headers: req.headers.append("Authorization", `Bearer ${this.authService.getToken()}`)})
+      return next.handle(req);
+    }
         
     req = req.clone({
       setHeaders: {

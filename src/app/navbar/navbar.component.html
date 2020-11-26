@@ -15,15 +15,24 @@
         <li class="nav-item px-3">
           <a class="nav-link" data-toggle="pill" routerLink = "/deploy" routerLinkActive="selected" href="#Deploy" >Deploy</a>
         </li>
-        <li class="nav-item px-3">
+        <!-- <li class="nav-item px-3">
             <a class="nav-link" data-toggle="pill" routerLink = "/settings" routerLinkActive="register" href="#Register">Settings</a>
         </li>
 
         <li class="nav-item px-3" (click)="logout()">
           <a class="nav-link" data-toggle="pill" routerLinkActive="register" href="#Logout">Logout</a>
+        </li> -->
+
+        <li class="nav-item px-3">
+          <img src="assets/images/profile.png" (click)="menu.toggle($event)"/>
         </li>
+        <p-tieredMenu class="mt-3" #menu [model]="items" [popup]="true"></p-tieredMenu>
       </ul>
     </div>
+    
+    
+    
   </nav>
+  
 
   
