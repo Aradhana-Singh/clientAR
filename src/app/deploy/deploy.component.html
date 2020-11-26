@@ -1,6 +1,8 @@
 <div class="box" >
   <div class="container">
-    <cdk-virtual-scroll-viewport class="gkz-viewport" [itemSize]="20" class="slide-in-bottom">
+    
+    <div *ngIf = "commithistory?.length">
+      <cdk-virtual-scroll-viewport class="gkz-viewport" [itemSize]="20" class="slide-in-bottom">
 
       <li *cdkVirtualFor="let i of commithistory;" class="slide-in-bottom" >
         <div class="d-flex bd-highlight">
@@ -30,9 +32,14 @@
       </li>
       
     
-    </cdk-virtual-scroll-viewport>
-    
-<p-dialog [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+      </cdk-virtual-scroll-viewport>
+    </div>
+
+    <div *ngIf = "!commithistory?.length">
+      <p class="text-ocean">No Commit History Exists</p>
+    </div>
+
+    <p-dialog [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
 [draggable]="false" [resizable]="false">
       <p-dropdown [options]="orgs" id="SfOrg" ngModel name="SfOrg" [(ngModel)]="selectedOrg" optionLabel="nick_name" [filter]="true" placeholder="Choose SalesForce Org" [style]="{'width':'25%'}" [style]="{'max-width':'100%','width': '100%'}">
         <ng-template pTemplate="selectedItem">
@@ -71,7 +78,7 @@
             </svg>
             </div>
           </ng-template>
-  </p-dialog>
+    </p-dialog>
    
   </div>
 </div>

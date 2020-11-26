@@ -18,7 +18,10 @@ export class UserComponent implements OnInit {
   public password:String;
   public loginBtn : boolean = false;
   public signUpBtn : boolean = true;
+  public buttonClick = false;
+  public index: number = 1;
   items: MenuItem[];
+
   constructor(private messageService: MessageService,private http:HttpClient, private cookieService: CookieService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -40,9 +43,11 @@ export class UserComponent implements OnInit {
         this.cookieService.set("token",data.token);
         console.log(data.token);
         this.messageService.add({severity: "success", summary:'Success', detail:'Successfully Logged in'});
+        this.buttonClick = true;
         setTimeout(() => {
+          this.buttonClick = false;
           this.router.navigate(['/home']);
-      }, 1000);
+        }, 1000);
       },
       error => {
         console.error('Error', error);
@@ -50,24 +55,6 @@ export class UserComponent implements OnInit {
     }
     );
   }
-
-  signup(severity: string){
-    let payload = {
-      "first_name": this.firstName,
-      "last_name": this.lastName,
-      "email": this.email,
-      "password": this.password
-    };
-    let commiturl = 'http://localhost:8080/user/sign-up';
-    this.http.post<any>(commiturl,payload).subscribe(
-      data => {
-        // this.cookieService.set("user_id", data.id);
-        console.log(data.id);
-        alert("Registration Successful");
-      }
-    ); 
-  }
-
 
   disabled(){
     return this.loginBtn;
@@ -103,11 +90,14 @@ export class UserComponent implements OnInit {
       "password": this.password
     };
     let commiturl = 'http://localhost:8080/user/sign-up';
+    this.buttonClick = true;
     this.http.post<any>(commiturl,payload).subscribe(
       data => {
         // this.cookieService.set("user_id", data.id);
         console.log(data.id);
+        this.buttonClick = false;
         this.messageService.add({severity: "success", summary:'Success', detail:'Successfully Signed Up'});
+        this.index = 1;
       },
       error => {
         console.log(error);

@@ -31,6 +31,20 @@ label{
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+
+  
+.p-progressbar .p-progressbar-value {
+  background: #00a8eb;
+}
+
+.p-progressbar {
+  background: #ff9d4c;
+  height: 0.1rem;
+}
+
+
+
+
 .buttons {
     margin-top: 15px;
     text-align: center;

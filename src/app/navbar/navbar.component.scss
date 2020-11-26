@@ -3,22 +3,29 @@
         // .p-tieredmenu .p-menuitem-link .p-menuitem-text {
         //     color: #6c757d;
         //   }
-          .p-tieredmenu .p-menuitem-link .p-menuitem-icon {
-            color: #6c757d;
-            margin-right: 0.5rem;
-          }
-          .p-tieredmenu .p-menuitem-link:not(.p-disabled):hover {
-            background: #e9ecef;
-          }
-          .p-tieredmenu .p-menuitem-link:not(.p-disabled):hover .p-menuitem-text {
-            color: orange;
-          }
-          .p-tieredmenu .p-menuitem-link:not(.p-disabled):hover .p-menuitem-icon {
-            color: orange;
-          }
+        .p-tieredmenu .p-menuitem-link .p-menuitem-icon {
+          color: #6c757d;
+          margin-right: 0.5rem;
+        }
+        .p-tieredmenu .p-menuitem-link:not(.p-disabled):hover {
+          background: #e9ecef;
+        }
+        .p-tieredmenu .p-menuitem-link:not(.p-disabled):hover .p-menuitem-text {
+          color: #00A8EB;
+        }
+        .p-tieredmenu .p-menuitem-link:not(.p-disabled):hover .p-menuitem-icon {
+          color: #00A8EB;
+        }
         .p-tieredmenu-overlay {
             top: 3.5rem !important;
         }
+
+        .p-tieredmenu .p-menuitem-link ul li:nth-child(2) {
+          color: red;
+        }
+        // .p-tieredmenu .p-menuitem-link:not(.p-disabled):hover {
+        //   background: orange;
+        // }
     }
 }
 
