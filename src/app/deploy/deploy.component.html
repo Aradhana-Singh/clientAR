@@ -1,63 +1,4 @@
-<!-- <br>
-<br>
-
-<div class= "container">
-    <div class = "row">
-      <div class = "col">
-        <label for="SfOrg" >Select Target SalesForce Org</label>
-          <p-dropdown [options]="orgs" id="SfOrg" ngModel name="SfOrg" [(ngModel)]="selectedOrg" optionLabel="nick_name" [filter]="true" placeholder="Choose Target SalesForce Org" [style]="{'width':'25%'}" [style]="{'max-width':'100%','width': '100%'}">
-            <ng-template pTemplate="selectedItem">
-                <div class="orgs-item orgs-item-value"  *ngIf="selectedOrg">
-                  <div>{{selectedOrg.nick_name}} | {{selectedOrg.org_label}}</div>
-                </div> 
-            </ng-template>
-            <ng-template let-org pTemplate="item" >
-                <div class="orgs-item" >
-                    <div >{{org.value.nick_name}} | {{org.value.org_label}}</div>
-                </div>
-            </ng-template>
-          </p-dropdown>
-      </div>
-     
-    </div>
-    
-    <br>
-    <br>
-    <div class = "row ">
-      <div class="mx-auto">
-        <div class="buttons" (click)="onSubmit(selectedOrg)">
-          <button class="blob1-btn" >
-            Deploy
-            <span class="blob1-btn__inner">
-              <span class="blob1-btn__blobs1">
-                <span class="blob1-btn__blob1"></span>
-                <span class="blob1-btn__blob1"></span>
-                <span class="blob1-btn__blob1"></span>
-                <span class="blob1-btn__blob1"></span>
-              </span>
-            </span>
-          </button>
-              
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-          <defs>
-            <filter id="goo">
-              <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
-              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
-              <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
-            </filter>
-          </defs>
-        </svg>
-      </div>
-      </div>
-      
-    </div>
-    
-   
-    
-   
-          
-  </div> -->
-
+<div class="box" >
   <div class="container">
     <cdk-virtual-scroll-viewport class="gkz-viewport" [itemSize]="20">
 
@@ -78,10 +19,6 @@
     
     </cdk-virtual-scroll-viewport>
   </div>
+</div>
+ 
   
-
-  <!-- <cdk-virtual-scroll-viewport class="gkz-viewport" [itemSize]="10">
-    <div *cdkVirtualFor="let i of commithistory; let in = index; templateCacheSize: 0" class="item">
-      Item #{{in}}: {{i}}
-    </div>
-  </cdk-virtual-scroll-viewport> -->

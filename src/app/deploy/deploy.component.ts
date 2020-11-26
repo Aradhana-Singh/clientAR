@@ -5,6 +5,7 @@ import { ViewChild } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map, tap, scan, mergeMap, throttleTime } from 'rxjs/operators';
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 const batchSize = 5;
@@ -67,6 +68,7 @@ export class DeployComponent implements OnInit {
   public commitSuccess = false;
   public success = false;
   displayModal: boolean;
+ 
   
   onSubmit(data){​​​​​
     this.orgId = data.org_id; 
@@ -95,8 +97,7 @@ export class DeployComponent implements OnInit {
       this.commithistory = data;
       console.log(data);
     });
-  } 
-
+  }
 
   onDeploy(deployItem){
     let payload = {
