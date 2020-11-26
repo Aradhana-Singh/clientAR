@@ -4,60 +4,85 @@
     <p-card>
         <p-tabView>
             <p-tabPanel header="Sign Up">
-                <div class="mb-4 mt-4">
-                    <span class="p-float-label"  >
-                        <input id="float-input" type="text" pInputText [(ngModel)]="firstName" [style]="{'width':'100%'}"> 
-                        <label for="float-input">FirstName</label>
-                        
-                    </span>
-                </div>
-                <div class="mb-4 ">
-                    <span class="p-float-label">
-                        <input id="float-input" type="text" pInputText [(ngModel)]="lastName" [style]="{'width':'100%'}"> 
-                        <label for="float-input">Last Name</label>
-                    </span>
-                </div>
-                <div class="mb-4">
-                    <span class="p-float-label">
-                    <input id="float-input" type="email" pInputText [(ngModel)]="email"  (blur) = "validateUser()" [style]="{'width':'100%'}" > 
-                    <label for="float-input">Email</label>
-                    <div *ngIf = "!signUpBtn">
-                        <small id="username2-help" class="p-invalid">Email already Registered.</small>
-                    </div>
-                    </span>
-                </div>
-                
-                <div class="mb-4">
-                    
-                    <span class="p-float-label">
-                        <input id="float-input" type="password" pInputText [(ngModel)]="password" [style]="{'width':'100%'}"> 
-                        <label for="float-input">Password</label>
-                    </span>
-                </div>
-                <div class="mt-3">
-                    <p-button label="SignUp" (onClick)="save()"></p-button>
-                </div>
-                 
-                
-        </p-tabPanel>
-    </p-tabView>
-        <p-tabView>
-            <p-tabPanel header="Login">
                 <div class="container">
                     <div class="row m-3">
-                        <div class="col p-0">
+                        <div class="col p-0 mt-2">
+                            <span class="p-float-label"  >
+                                <input id="float-input" type="text" pInputText [(ngModel)]="firstName" [style]="{'width':'100%'}"> 
+                                <label for="float-input">FirstName</label>
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row m-3">
+                        <div class="col p-0 mt-2">
+                            <span class="p-float-label">
+                                <input id="float-input" type="text" pInputText [(ngModel)]="lastName" [style]="{'width':'100%'}"> 
+                                <label for="float-input">Last Name</label>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row m-3">
+                        <div class="col p-0 mt-2">
                             <span class="p-float-label">
                                 <input id="float-input" type="email" pInputText [(ngModel)]="email"  (blur) = "validateUser()" [style]="{'width':'100%'}" > 
                                 <label for="float-input">Email</label>
-                                <div *ngIf = "loginBtn">
-                                    <small id="username2-help" class="p-invalid">Email not found</small>
+                                <div *ngIf = "!signUpBtn">
+                                    <small id="username2-help" class="p-invalid">Email already Registered.</small>
                                 </div>
-                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row m-3">
+                        <div class="col p-0 mt-2">
+                            <span class="p-float-label">
+                                <input id="float-input" type="password" pInputText [(ngModel)]="password" [style]="{'width':'100%'}"> 
+                                <label for="float-input">Password</label>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row m-3">
+                        <div class="col p-0 mt-2">
+                            <p-button label="SignUp" (onClick)="save()"></p-button>
                         </div>
                     </div>
                 </div>
-            </p-tabPanel>
-        </p-tabView>
+
+  
+        </p-tabPanel>
+        <p-tabPanel header="Login">
+            <div class="container">
+                <div class="row m-3">
+                    <div class="col p-0 mt-2">
+                        <span class="p-float-label">
+                            <input id="float-input" type="email" pInputText [(ngModel)]="email"  (blur) = "validateUser()" [style]="{'width':'100%'}" > 
+                            <label for="float-input">Email</label>
+                            <div *ngIf = "loginBtn">
+                                <small id="username2-help" class="p-invalid">Email not found</small>
+                            </div>
+                            </span>
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col p-0 mt-2">
+                        <span class="p-float-label">
+                            <input id="float-input" type="password" pInputText [(ngModel)]="password" [style]="{'width':'100%'}"> 
+                            <label for="float-input">Password</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col p-0 mt-2">
+                        <p-button label="Login" (onClick)="login()"></p-button>
+                    </div>
+                </div>
+            </div>
+        </p-tabPanel>
+    </p-tabView>
     </p-card>
 </div>
 </div>
