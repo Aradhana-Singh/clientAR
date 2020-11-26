@@ -147,13 +147,14 @@
 
 
 <p-dialog [(visible)]="fileUploadModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
-    [draggable]="false" [resizable]="false">
+[draggable]="false" [resizable]="false" >
     <!-- <textarea [rows]="5" [cols]="80" ngModel name="commit_msg" [(ngModel)]="commit_msg" placeholder = "Enter a commit message" pInputTextarea ></textarea> -->
-    
-    <div class="upload-area">
-      <input type="file" (change)="fileChoice($event)"/>
-      <p>Drag your files here or click in this area.</p>
-    </div>
+    <form >
+      <div>
+        <input type="file" multiple  (change)="fileChoice($event)">
+        <p>{{message}}</p>
+      </div>
+    </form>
 
     <ng-template pTemplate="footer">
           <div class="buttons2" (click)="sendFile()">
