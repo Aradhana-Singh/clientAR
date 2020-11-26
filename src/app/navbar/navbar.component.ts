@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { MenuItem } from "primeng/api";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,20 +11,31 @@ import { MenuItem } from "primeng/api";
 export class NavbarComponent implements OnInit {
   items: MenuItem[];
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
+
+  getUserName() 
+  {
+    return "xyz";
+  }
 
   ngOnInit(): void {
     this.items = [
       {
-        label: "Settings",
-        icon: "pi pi-fw pi-cog"
+        label: this.getUserName()
       },
       {
         separator: true
       },
       {
+        label: "Settings",
+        icon: "pi pi-fw pi-cog",
+        command: () => this.router.navigate(['/settings'])
+      },
+      
+      {
         label: "Logout",
-        icon: "pi pi-fw pi-power-off"
+        icon: "pi pi-fw pi-power-off",
+        command: () => this.router.navigate(['/logout'])
       }
     ];
   }
