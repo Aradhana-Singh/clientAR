@@ -14,7 +14,6 @@ export class NavbarComponent implements OnInit {
   items: MenuItem[];
   getUser = "http://localhost:8080/user/get-user";
   public full_name = "";
-
   constructor(private authService: AuthService, private router: Router, private http:HttpClient) { }
 
   getUserName() 
@@ -26,33 +25,35 @@ export class NavbarComponent implements OnInit {
     // let full_name = "";
 
     let response = this.http.get<any>(this.getUser,{withCredentials:true, params: params});
+    
     response.subscribe((user)=>{
       this.full_name = user["first_name"] + " " + user["last_name"];
       console.log(this.full_name);
+      this.items = [
+        {
+          label: this.full_name
+        },
+        {
+          separator: true
+        },
+        {
+          label: "Settings",
+          icon: "pi pi-fw pi-cog",
+          command: () => this.router.navigate(['/settings'])
+        },
+        
+        {
+          label: "Logout",
+          icon: "pi pi-fw pi-power-off",
+          command: () => this.logout()
+        }
+      ]; 
     });
+
   }
 
   ngOnInit(): void {
-     this.getUserName();
-    this.items = [
-      {
-        label: this.full_name
-      },
-      {
-        separator: true
-      },
-      {
-        label: "Settings",
-        icon: "pi pi-fw pi-cog",
-        command: () => this.router.navigate(['/settings'])
-      },
-      
-      {
-        label: "Logout",
-        icon: "pi pi-fw pi-power-off",
-        command: () => this.logout()
-      }
-    ]; 
+      this.getUserName();
   }
 
   logout() 
