@@ -38,6 +38,7 @@ export class CommitComponent implements OnInit {
   public buttonClick = false;
   public commitSuccess = false;
   public success = false;
+  public message = "Drag your files here or click in this area";
   displayModal: boolean;
   fileUploadModal: boolean;
   file = null;
@@ -115,6 +116,7 @@ export class CommitComponent implements OnInit {
 
   fileChoice(theEventFromHtml) {
     this.file = theEventFromHtml.target.files[0];
+    this.message = this.file.name;
   }
 
   sendFile() {
