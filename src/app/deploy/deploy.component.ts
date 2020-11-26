@@ -6,6 +6,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { map, tap, scan, mergeMap, throttleTime } from 'rxjs/operators';
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 
 const batchSize = 5;
@@ -68,6 +69,7 @@ export class DeployComponent implements OnInit {
   public buttonClick = false;
   public commitSuccess = false;
   public success = false;
+  public progress = false;
   displayPosition: boolean;
   displayModal: boolean;
   position: string;
@@ -84,7 +86,7 @@ export class DeployComponent implements OnInit {
     }​​​​​);
   }​​​​​
 
-  constructor(private http:HttpClient) { 
+  constructor(private messageService: MessageService,private http:HttpClient) { 
  
    
   }
@@ -120,6 +122,7 @@ export class DeployComponent implements OnInit {
 }
 
   onDeploy(){
+    this.progress =true;
     console.log(this.selectedOrg);
     this.payload["target_org_id"]=this.selectedOrg.org_id;
     console.log(this.payload);
@@ -131,8 +134,16 @@ export class DeployComponent implements OnInit {
     }).subscribe(
       data => {
         console.log(data);
+        this.progress = false;
+        this.displayModal = false;
+        this.messageService.add({severity: "success", summary:'Done', detail:'Deploy Successful'});
       },
-      error => console.error('Error', error)
+      error => {
+        console.error('Error', error);
+        this.progress = false;
+        this.displayModal= false;
+        this.messageService.add({severity: "error", summary:'Error', detail:'Something went wrong, Please try again'});
+      }
     );
 
   }
