@@ -25,6 +25,7 @@
     "animate.css": "^4.1.1",
     "bootstrap": "^4.5.3",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
     "ngx-cookie-service": "^10.1.1",
     "parse5": "^6.0.1",
     "primeicons": "^4.0.0",
