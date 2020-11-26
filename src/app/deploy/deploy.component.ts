@@ -57,6 +57,7 @@ export class DeployComponent implements OnInit {
   public repos: string [] = [];
   public gitaccs: string [] = [];
   public commithistory: string []= [];
+  public payload;
   public accId;
   public selectedRepo;
   public orgId;
@@ -67,7 +68,10 @@ export class DeployComponent implements OnInit {
   public buttonClick = false;
   public commitSuccess = false;
   public success = false;
+  displayPosition: boolean;
   displayModal: boolean;
+  position: string;
+  public right = "right";
  
   
   onSubmit(data){​​​​​
@@ -86,9 +90,9 @@ export class DeployComponent implements OnInit {
   }
 
   ngOnInit(): void {
-     
     let Sfresponse = this.http.get<any>(this.sfurl,{withCredentials:true});
     Sfresponse.subscribe((data)=>{
+      console.log(data);
       this.orgs = data;
     });
 
@@ -99,8 +103,10 @@ export class DeployComponent implements OnInit {
     });
   }
 
-  onDeploy(deployItem){
-    let payload = {
+
+  showPositionDialog(deployItem) {
+    
+    this.payload = {
       "target_org_id":"00D2w00000EwNkZEAV",
       "account_id" : deployItem.account_id,
       "org_id": deployItem.org_id,
@@ -108,7 +114,14 @@ export class DeployComponent implements OnInit {
       "commit_hash": deployItem.commit_hash,
       "repo_url" : deployItem.repo_url
     }
-    this.http.post<any>(this.deployUrl, payload,{
+    this.position = this.right;
+    this.displayPosition = true;
+}
+
+  onDeploy(){
+    
+    console.log(this.payload);
+    this.http.post<any>(this.deployUrl, this.payload,{
       observe: 'response',
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
       responseType: 'json',

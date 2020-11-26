@@ -32,7 +32,7 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .p-tieredmenu {
-    padding: 0.25rem 0;
+    padding: 0;
     background: #ffffff;
     color: orange;
     border: 1px solid #dee2e6;
@@ -40,7 +40,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width: 12.5rem;
   }
   .p-tieredmenu .p-menuitem-link {
-    padding: 0.75rem 1rem;
+    padding: 1rem;
     color: orange;
     border-radius: 0;
     transition: box-shadow 0.2s;
@@ -95,9 +95,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
   .p-tieredmenu .p-menu-separator {
     border-top: 1px solid #dee2e6;
-    margin: 0.25rem 0;
+    margin: 0;
   }
   .p-tieredmenu .p-submenu-icon {
     font-size: 0.875rem;
   }
-  
+  .p-menu-seperator{
+    margin:0;
+}

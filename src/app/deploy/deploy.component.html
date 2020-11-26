@@ -1,4 +1,16 @@
 <div class="box" >
+  <p-dropdown [options]="orgs" id="SfOrg" ngModel name="SfOrg" [(ngModel)]="selectedOrg" optionLabel="nick_name" [filter]="true" placeholder="Choose SalesForce Org" [style]="{'width':'25%'}" [style]="{'max-width':'100%','width': '100%'}">
+    <ng-template pTemplate="selectedItem">
+        <div class="orgs-item orgs-item-value"  *ngIf="selectedOrg">
+          <div>{{selectedOrg.nick_name}} | {{selectedOrg.org_label}}</div>
+        </div> 
+    </ng-template>
+    <ng-template let-org pTemplate="item" >
+        <div class="orgs-item" (click)="onChangeOrg()" >
+            <div >{{org.value.nick_name}} | {{org.value.org_label}}</div>
+        </div>
+    </ng-template>
+  </p-dropdown>
   <div class="container">
     <cdk-virtual-scroll-viewport class="gkz-viewport" [itemSize]="20">
 
@@ -24,11 +36,32 @@
               <div class="p-2 flex-fill bd-highlight" style="font-size: 10px;"><img src="assets/images/mes.png" style="margin-right: 5px;">{{i.commit_msg}}</div>
             </div>
           </div>
-          <div class="p-2 flex-fill bd-highlight" ><button type="button" class="btn btn-outline-primary waves-effect" style="font-size: 14px; word-break:initial;" (click) = "onDeploy(i)">Deploy</button></div>
+          <div class="p-2 flex-fill bd-highlight" ><button type="button" class="btn btn-outline-primary waves-effect" style="font-size: 14px; word-break:initial;" (click) = "showPositionDialog(i)">Deploy</button></div>
         </div>
+       
       </li>
+      
     
     </cdk-virtual-scroll-viewport>
+    <p-dialog header="Deploy" [(visible)]="displayPosition" [position]="position" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+      [draggable]="false" [resizable]="false">
+      <p-dropdown [options]="orgs" id="SfOrg" ngModel name="SfOrg" [(ngModel)]="selectedOrg" optionLabel="nick_name" [filter]="true" placeholder="Choose SalesForce Org" [style]="{'width':'25%'}" [style]="{'max-width':'100%','width': '100%'}">
+        <ng-template pTemplate="selectedItem">
+            <div class="orgs-item orgs-item-value"  *ngIf="selectedOrg">
+              <div>{{selectedOrg.nick_name}} | {{selectedOrg.org_label}}</div>
+            </div> 
+        </ng-template>
+        <ng-template let-org pTemplate="item" >
+            <div class="orgs-item" (click)="onChangeOrg()" >
+                <div >{{org.value.nick_name}} | {{org.value.org_label}}</div>
+            </div>
+        </ng-template>
+      </p-dropdown>
+          <ng-template pTemplate="footer">
+              <p-button icon="pi pi-check" (click)="displayPosition=false; onDeploy()" label="Ok" styleClass="p-button-text"></p-button>
+          </ng-template>
+  </p-dialog>
+   
   </div>
 </div>
  
