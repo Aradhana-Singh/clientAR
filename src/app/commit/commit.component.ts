@@ -35,6 +35,7 @@ export class CommitComponent implements OnInit {
   public selectedOrg;
   public GitRepoUrl; 
   public commit_msg;
+  public displayRepo = false;
   public buttonClick = false;
   public commitSuccess = false;
   public success = false;
@@ -42,7 +43,7 @@ export class CommitComponent implements OnInit {
   displayModal: boolean;
   fileUploadModal: boolean;
   file = null;
-  
+
   constructor(private messageService: MessageService,private http:HttpClient) { 
   }
   onSubmit(){
@@ -79,11 +80,14 @@ export class CommitComponent implements OnInit {
   }
 
   onChangeGitacc(data){
+    this.buttonClick = true;
     this.accId = data.id; 
     let url = this.listrepourl.concat(this.accId);
     let repos = this.http.get<any>(url,{withCredentials:true});
     repos.subscribe((data)=>{
+      this.buttonClick = false;
       this.repos = data;
+      this.displayRepo = true;
     });
   }
 

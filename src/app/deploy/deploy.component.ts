@@ -90,11 +90,7 @@ export class DeployComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let Sfresponse = this.http.get<any>(this.sfurl,{withCredentials:true});
-    Sfresponse.subscribe((data)=>{
-      console.log(data);
-      this.orgs = data;
-    });
+   
 
     let Chresponse = this.http.get<any>(this.commithistoryurl,{withCredentials:true});
     Chresponse.subscribe((data)=>{
@@ -105,21 +101,27 @@ export class DeployComponent implements OnInit {
 
 
   showPositionDialog(deployItem) {
+    let Sfresponse = this.http.get<any>(this.sfurl,{withCredentials:true});
+    Sfresponse.subscribe((data)=>{
+      console.log(data);
+      this.orgs = data;
+    });
     
     this.payload = {
-      "target_org_id":"00D2w00000EwNkZEAV",
       "account_id" : deployItem.account_id,
       "org_id": deployItem.org_id,
       "repo_id": deployItem.repo_id,
       "commit_hash": deployItem.commit_hash,
       "repo_url" : deployItem.repo_url
     }
-    this.position = this.right;
-    this.displayPosition = true;
+    this.displayModal = true;
+    // this.position = this.right;
+    // this.displayPosition = true;
 }
 
   onDeploy(){
-    
+    console.log(this.selectedOrg);
+    this.payload["target_org_id"]=this.selectedOrg.org_id;
     console.log(this.payload);
     this.http.post<any>(this.deployUrl, this.payload,{
       observe: 'response',

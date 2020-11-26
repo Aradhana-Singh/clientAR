@@ -39,27 +39,30 @@
         </div>
       </ng-template>
       </p-dropdown>
-      
+ 
       <br>
-
       <hr>
       
-      <label for="GitRepo">Select Repository</label>
-      
-      <br>
-      
-      <p-dropdown [options]="repos" [(ngModel)]="selectedRepo" ngModel name="gitaccs" optionLabel="repoName" [filter]="true" placeholder="Choose Repository" [style]="{'max-width':'100%','width': '100%'}">
-      <ng-template pTemplate="selectedItem">
-      <div class="repos-item repos-item-value"   *ngIf="selectedRepo">
-        <div>{{selectedRepo.repoName}}</div>
+    
+      <div >
+       <div>
+        <label for="GitRepo">Select Repository</label>
+        <p-dropdown [options]="repos" [(ngModel)]="selectedRepo" ngModel name="gitaccs" optionLabel="repoName" [filter]="true" placeholder="Choose Repository" [style]="{'max-width':'100%','width': '100%'}">
+          <ng-template pTemplate="selectedItem">
+          <div class="repos-item repos-item-value"   *ngIf="selectedRepo">
+            <div>{{selectedRepo.repoName}}</div>
+          </div>
+          </ng-template>
+          <ng-template let-repo pTemplate="item"  >
+          <div class="repos-item" >
+              <div >{{repo.value.repoName}}</div>
+          </div>
+          </ng-template>
+          </p-dropdown>
+       </div>
+       
       </div>
-      </ng-template>
-      <ng-template let-repo pTemplate="item"  >
-      <div class="repos-item" >
-          <div >{{repo.value.repoName}}</div>
-      </div>
-      </ng-template>
-      </p-dropdown>
+      
 
       <br>
       
@@ -95,8 +98,8 @@
     
   </div>
   
-  <br>
-  <!-- <div *ngIf = "buttonClick">
+  <!-- <br>
+  <div *ngIf = "buttonClick">
     <div class="d-flex justify-content-center">
       <strong>Commiting Changes... </strong>
       <div class="spinner-border text-success ml-5" role="status" aria-hidden="true"></div>
@@ -107,9 +110,9 @@
       <strong>Commit Successful</strong>
       <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" style ="margin-left: 100px; margin-top: 7px;" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
     </div>
-  </div> -->
+  </div>
 
-  <br>
+  <br> -->
   
  
         
@@ -119,7 +122,7 @@
     [draggable]="false" [resizable]="false">
     <textarea [rows]="5" [cols]="80" ngModel name="commit_msg" [(ngModel)]="commit_msg" placeholder = "Enter a commit message" pInputTextarea ></textarea>
         <ng-template pTemplate="footer">
-          <div class="buttons1" (click)="onSubmit()">
+          <div  (click)="onSubmit()">
             <button class="blob1-btn submit" >
               Ok
               <span class="blob1-btn__inner ">
@@ -183,18 +186,4 @@
     </ng-template>
 </p-dialog>
 
-<!-- <br>
-<br>
-Choose a file: <input type="file" (change)="imageChoice($event)">
-<br>
-<br>
-<button (click)="sendFile()">Send File</button> -->
-
-<!-- <cdk-virtual-scroll-viewport itemSize="100" (scrolledIndexChange)="handler($event)">
-
-  <li *cdkVirtualFor="let person of people">
-    {{ person }}
-  </li>
-
-</cdk-virtual-scroll-viewport> -->
 
