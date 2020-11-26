@@ -76,6 +76,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
+import {SplitButtonModule} from 'primeng/splitbutton';
+import {RouterModule} from '@angular/router';
+import { ToastModule } from 'primeng/toast';
 import {TieredMenuModule} from 'primeng/tieredmenu';
 
 // import { BasicScrollComponent } from './basic-scroll/basic-scroll.component';
@@ -159,6 +162,10 @@ import {TieredMenuModule} from 'primeng/tieredmenu';
     MatTreeModule,
     OverlayModule,
     PortalModule,
+    RouterModule,
+    ScrollingModule,
+    SplitButtonModule,
+    ToastModule,
     ScrollingModule,
     TieredMenuModule
   ],
