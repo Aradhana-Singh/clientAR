@@ -1,16 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { MenuItem } from "primeng/api";
 import { Router } from '@angular/router';
 import jwt_decode from "jwt-decode";
 import {HttpClient,HttpParams} from '@angular/common/http'
+import { Menu, MenuModule } from 'primeng/menu';
+
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
+
 export class NavbarComponent implements OnInit {
   items: MenuItem[];
+  @ViewChild('menu') menu: Menu;
+
   getUser = "http://localhost:8080/user/get-user";
   public full_name = "";
   constructor(private authService: AuthService, private router: Router, private http:HttpClient) { }
@@ -28,6 +34,7 @@ export class NavbarComponent implements OnInit {
     response.subscribe((user)=>{
       this.full_name = user["first_name"] + " " + user["last_name"];
       console.log(this.full_name);
+      
       this.items = [
         {
           label: this.full_name
@@ -38,7 +45,10 @@ export class NavbarComponent implements OnInit {
         {
           label: "Settings",
           icon: "pi pi-fw pi-cog",
-          command: () => this.router.navigate(['/settings'])
+          command: (event) => {
+            this.router.navigate(['/settings']);
+            this.menu.toggle(event);
+          }
         },
         
         {
