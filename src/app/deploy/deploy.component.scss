@@ -283,6 +283,14 @@ cdk-virtual-scroll-viewport {
     .p-dialog-content {
       overflow-y: visible;
   }
+  .p-progressbar .p-progressbar-value {
+    background: #00a8eb;
+  }
+
+  .p-progressbar {
+    background: #ff9d4c;
+    height: 0.1rem;
+    z-index: 11004;
+  }
   }
 }
-
