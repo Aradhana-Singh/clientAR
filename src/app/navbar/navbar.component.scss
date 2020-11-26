@@ -1,4 +1,10 @@
-
+:host {
+    ::ng-deep {
+        .p-tieredmenu-overlay {
+            top: 3.5rem !important;
+        }
+    }
+}
 
 .horizontalMenu:active{
     border: black;

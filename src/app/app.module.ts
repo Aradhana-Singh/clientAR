@@ -76,6 +76,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
+import {TieredMenuModule} from 'primeng/tieredmenu';
 
 // import { BasicScrollComponent } from './basic-scroll/basic-scroll.component';
 // import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
@@ -158,7 +159,8 @@ import {OverlayModule} from '@angular/cdk/overlay';
     MatTreeModule,
     OverlayModule,
     PortalModule,
-    ScrollingModule
+    ScrollingModule,
+    TieredMenuModule
   ],
   providers: [ CookieService, AuthService, AuthGuard, {
     provide : HTTP_INTERCEPTORS,
