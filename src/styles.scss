@@ -103,7 +103,7 @@ svg{
       border-radius:30px;
     }
     
-    &:hover {
+    &:hover:enabled {
       color: $dark;
       border-radius:30px;
       
@@ -135,7 +135,7 @@ svg{
       filter: url('#goo');
     }
     
-    &__blob {
+    &__blob:enabled {
       position: absolute;
       top: $borderW;
       width: 100% / $numOfBlobs;
