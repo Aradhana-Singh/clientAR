@@ -9,32 +9,34 @@
     
     <div *ngIf = "commithistory?.length">
       <cdk-virtual-scroll-viewport class="gkz-viewport" [itemSize]="20" class="slide-in-bottom">
-      <li *cdkVirtualFor="let i of commithistory;" class="slide-in-bottom" >
-        
-          <div class="row">
-            <div class="col-sm-3">
-              <div class="p-2 flex-fill bd-highlight" style="font-size: 14px;"><img src="assets/images/time.png" style="margin-right: 5px;">{{i.timestamp | date:'mediumDate'}},{{i.timestamp | date:'mediumTime'}}</div>
-              <div class="p-2 flex-fill bd-highlight" style="font-size: 14px;"><img src="assets/images/org.png" style="margin-right: 5px;">{{i.nick_name}} </div>
-            </div>
-            <div class="col-sm-2">
-  
-              <div class="p-2 flex-fill bd-highlight" style="font-size: 14px;"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPgo8cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSIiIGQ9Ik01MTEuNjc2LDQ5OC43NTJsLTEyLjgtNTEuMmMtNi4wNzMtMjQuODM4LTI0LjQ4NS00NC44MTMtNDguNzQ3LTUyLjg4NWwtOTMuODY3LTMxLjI3NSAgYy0yMi44OTEtOS41MzYtMzMuMzY1LTQ2LjQtMzUuNjI3LTYwLjM5NWMxNy40NDItMTQuNTA0LDI4LjY2NS0zNS4xNCwzMS4zNi01Ny42NjRjLTAuMzg1LTMuODQ3LDAuNTIzLTcuNzEzLDIuNTgxLTEwLjk4NyAgYzMuMzI2LTAuODMzLDYuMDQ5LTMuMjE1LDcuMzE3LTYuNGM2LjE0Mi0xNC44NzIsOS45OTctMzAuNTg4LDExLjQzNS00Ni42MTNjMC4wMDMtMC44NzEtMC4xMDQtMS43MzgtMC4zMi0yLjU4MSAgYy0xLjUyOC02LjIyNy01LjE4OS0xMS43MjItMTAuMzQ3LTE1LjUzMXYtNTYuNTU1YzAtMzQuMzY4LTEwLjQ5Ni00OC40NjktMjEuNTQ3LTU2LjY0QzMzOS4wMDQsMzMuNDcyLDMyMS4yNzYsMCwyNTUuOTk2LDAgIGMtNTcuOTE3LDIuMzMyLTEwNC4zMzUsNDguNzUtMTA2LjY2NywxMDYuNjY3djU2LjU1NWMtNS4xNTgsMy44MDktOC44MTksOS4zMDQtMTAuMzQ3LDE1LjUzMWMtMC4yMTYsMC44NDMtMC4zMjMsMS43MTEtMC4zMiwyLjU4MSAgYzEuNDM2LDE2LjAzMyw1LjI5MSwzMS43NTYsMTEuNDM1LDQ2LjYzNWMwLjkyNCwzLjAxNSwzLjM0Nyw1LjMzNCw2LjQsNi4xMjNjMS4xOTUsMC41OTcsMy40MzUsMy42OTEsMy40MzUsMTEuMjQzICBjMi43MTEsMjIuNTg4LDEzLjk5OSw0My4yNzEsMzEuNTMxLDU3Ljc3MWMtMi4yNCwxMy45NzMtMTIuNjUxLDUwLjgxNi0zNC45MDEsNjAuMTE3bC05NC42OTksMzEuNDQ1ICBjLTI0LjI0Myw4LjA3MS00Mi42NDMsMjguMDI2LTQ4LjcyNSw1Mi44NDNsLTEyLjgsNTEuMmMtMS40NDksNS43MSwyLjAwNSwxMS41MTQsNy43MTUsMTIuOTYzYzAuODUzLDAuMjE3LDEuNzMsMC4zMjcsMi42MSwwLjMyOCAgaDQ5MC42NjdjNS44OTEtMC4wMDIsMTAuNjY1LTQuNzc5LDEwLjY2NC0xMC42N0M1MTEuOTkzLDUwMC40NjEsNTExLjg4Niw0OTkuNTk1LDUxMS42NzYsNDk4Ljc1MnoiIGZpbGw9IiM4MDg2OGIiIGRhdGEtb3JpZ2luYWw9IiM0NTVhNjQiIGNsYXNzPSIiPjwvcGF0aD4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPC9nPjwvc3ZnPg==" width="20" height="20"/>{{i.git_username}}</div>
-        
-              <div class="p-2 flex-fill bd-highlight" style="font-size: 14px;"><img src="assets/images/github.png" style="margin-right: 5px;">{{i.repo_name}}</div>
-            </div>
-            <!-- <div class="col-sm-2">
-             
-            </div> -->
-            <div class="col-sm-5">
-              <div class="p-2 flex-fill bd-highlight" style="font-size: 14px;"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDMyIDMyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIiBjbGFzcz0iIj48Zz48ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJMYXllcl8yIiBkYXRhLW5hbWU9IkxheWVyIDIiPjxwYXRoIGQ9Im0yNy42NyAzLjEzaC0yMy4zNGEzLjM0IDMuMzQgMCAwIDAgLTMuMzMgMy4zM3YxNS4zM2EzLjM0IDMuMzQgMCAwIDAgMy4zMyAzLjM0aDIuNjdsMS45MiAzYTEuNDggMS40OCAwIDAgMCAxLjI3LjcgMS41MiAxLjUyIDAgMCAwIDEuMjgtLjczbDEuODItM2gxNC4zOGEzLjM0IDMuMzQgMCAwIDAgMy4zMy0zLjMxdi0xNS4zM2EzLjM0IDMuMzQgMCAwIDAgLTMuMzMtMy4zM3ptLTYuNjcgOWgtMTBhMSAxIDAgMCAxIC0xLTEgMSAxIDAgMCAxIDEtMWgxMGExIDEgMCAwIDEgMSAxIDEgMSAwIDAgMSAtMSAxem0xIDQuNTVhMSAxIDAgMCAxIC0xIDFoLTEwYTEgMSAwIDAgMSAwLTJoMTBhMSAxIDAgMCAxIDEgMXoiIGZpbGw9IiM4MDg2OGIiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48L2c+PC9nPjwvc3ZnPg=="  width="20" height="20" />{{i.commit_msg}}</div>
-              <div class="p-2 flex-fill bd-highlight" style="font-size: 14px;">
-                <img src="assets/images/GitFinalSure.svg">{{ i.commit_hash }}</div>            
-            </div>
-            <div class = "col-sm-1 align-self-center buttonclass">
-              <button type="button" class="btn btn-outline-primary waves-effect" style="font-size: 14px; word-break:initial;" (click) = "showPositionDialog(i)">Deploy</button>
-            </div> 
-          </div>       
-      </li>
+
+      <div *cdkVirtualFor="let i of commithistory;" class="item-div slide-in-bottom" >
+      
+        <div class="row m-0">
+
+          <div class="col-sm-3">
+            <div class="p-2 flex-fill bd-highlight"><img class="mr-07" src="assets/images/time.png">{{i.timestamp | date:'mediumDate'}}, {{i.timestamp | date:'mediumTime'}}</div>
+            <div class="p-2 flex-fill bd-highlight"><img class="mr-07" src="assets/images/org.png">{{i.nick_name}} </div>
+          </div>
+
+          <div class="col-sm-2 p-0">
+            <div class="p-2 flex-fill bd-highlight" style="font-size: 14px;"><img class="mr-07" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPgo8cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSIiIGQ9Ik01MTEuNjc2LDQ5OC43NTJsLTEyLjgtNTEuMmMtNi4wNzMtMjQuODM4LTI0LjQ4NS00NC44MTMtNDguNzQ3LTUyLjg4NWwtOTMuODY3LTMxLjI3NSAgYy0yMi44OTEtOS41MzYtMzMuMzY1LTQ2LjQtMzUuNjI3LTYwLjM5NWMxNy40NDItMTQuNTA0LDI4LjY2NS0zNS4xNCwzMS4zNi01Ny42NjRjLTAuMzg1LTMuODQ3LDAuNTIzLTcuNzEzLDIuNTgxLTEwLjk4NyAgYzMuMzI2LTAuODMzLDYuMDQ5LTMuMjE1LDcuMzE3LTYuNGM2LjE0Mi0xNC44NzIsOS45OTctMzAuNTg4LDExLjQzNS00Ni42MTNjMC4wMDMtMC44NzEtMC4xMDQtMS43MzgtMC4zMi0yLjU4MSAgYy0xLjUyOC02LjIyNy01LjE4OS0xMS43MjItMTAuMzQ3LTE1LjUzMXYtNTYuNTU1YzAtMzQuMzY4LTEwLjQ5Ni00OC40NjktMjEuNTQ3LTU2LjY0QzMzOS4wMDQsMzMuNDcyLDMyMS4yNzYsMCwyNTUuOTk2LDAgIGMtNTcuOTE3LDIuMzMyLTEwNC4zMzUsNDguNzUtMTA2LjY2NywxMDYuNjY3djU2LjU1NWMtNS4xNTgsMy44MDktOC44MTksOS4zMDQtMTAuMzQ3LDE1LjUzMWMtMC4yMTYsMC44NDMtMC4zMjMsMS43MTEtMC4zMiwyLjU4MSAgYzEuNDM2LDE2LjAzMyw1LjI5MSwzMS43NTYsMTEuNDM1LDQ2LjYzNWMwLjkyNCwzLjAxNSwzLjM0Nyw1LjMzNCw2LjQsNi4xMjNjMS4xOTUsMC41OTcsMy40MzUsMy42OTEsMy40MzUsMTEuMjQzICBjMi43MTEsMjIuNTg4LDEzLjk5OSw0My4yNzEsMzEuNTMxLDU3Ljc3MWMtMi4yNCwxMy45NzMtMTIuNjUxLDUwLjgxNi0zNC45MDEsNjAuMTE3bC05NC42OTksMzEuNDQ1ICBjLTI0LjI0Myw4LjA3MS00Mi42NDMsMjguMDI2LTQ4LjcyNSw1Mi44NDNsLTEyLjgsNTEuMmMtMS40NDksNS43MSwyLjAwNSwxMS41MTQsNy43MTUsMTIuOTYzYzAuODUzLDAuMjE3LDEuNzMsMC4zMjcsMi42MSwwLjMyOCAgaDQ5MC42NjdjNS44OTEtMC4wMDIsMTAuNjY1LTQuNzc5LDEwLjY2NC0xMC42N0M1MTEuOTkzLDUwMC40NjEsNTExLjg4Niw0OTkuNTk1LDUxMS42NzYsNDk4Ljc1MnoiIGZpbGw9IiM4MDg2OGIiIGRhdGEtb3JpZ2luYWw9IiM0NTVhNjQiIGNsYXNzPSIiPjwvcGF0aD4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPC9nPjwvc3ZnPg==" width="20" height="20"/>{{i.git_username}}</div>
+            <div class="p-2 flex-fill bd-highlight" style="font-size: 14px;"><img class="mr-07" src="assets/images/github.png">{{i.repo_name}}</div>
+          </div>
+          
+          <div class="col-sm-5 p-0">
+            <div class="p-2 flex-fill bd-highlight" style="font-size: 14px;"><img class="mr-07" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDMyIDMyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIiBjbGFzcz0iIj48Zz48ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJMYXllcl8yIiBkYXRhLW5hbWU9IkxheWVyIDIiPjxwYXRoIGQ9Im0yNy42NyAzLjEzaC0yMy4zNGEzLjM0IDMuMzQgMCAwIDAgLTMuMzMgMy4zM3YxNS4zM2EzLjM0IDMuMzQgMCAwIDAgMy4zMyAzLjM0aDIuNjdsMS45MiAzYTEuNDggMS40OCAwIDAgMCAxLjI3LjcgMS41MiAxLjUyIDAgMCAwIDEuMjgtLjczbDEuODItM2gxNC4zOGEzLjM0IDMuMzQgMCAwIDAgMy4zMy0zLjMxdi0xNS4zM2EzLjM0IDMuMzQgMCAwIDAgLTMuMzMtMy4zM3ptLTYuNjcgOWgtMTBhMSAxIDAgMCAxIC0xLTEgMSAxIDAgMCAxIDEtMWgxMGExIDEgMCAwIDEgMSAxIDEgMSAwIDAgMSAtMSAxem0xIDQuNTVhMSAxIDAgMCAxIC0xIDFoLTEwYTEgMSAwIDAgMSAwLTJoMTBhMSAxIDAgMCAxIDEgMXoiIGZpbGw9IiM4MDg2OGIiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD48L2c+PC9nPjwvc3ZnPg=="  width="20" height="20" />{{i.commit_msg}}</div>
+            <div class="p-2 flex-fill bd-highlight" style="font-size: 14px;">
+              <img class="mr-07" src="assets/images/GitFinalSure.svg">{{ i.commit_hash }}</div>            
+          </div>
+          
+          <div class = "p-2 col-sm-2 d-flex buttonclass">
+            <button type="button" class=" mx-auto btn btn-outline-primary waves-effect" style="font-size: 14px; word-break: initial;" (click) = "showPositionDialog(i)">Deploy</button>
+          </div>
+
+        </div>     
+
+      </div>
 
       
     

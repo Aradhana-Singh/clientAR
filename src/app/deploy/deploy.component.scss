@@ -2,6 +2,9 @@
   margin-top: 9vh;
   overflow-y: hidden; 
 }
+
+
+
 .buttons1 {
     margin-top: 15px;
     text-align: center;
@@ -142,9 +145,12 @@ svg{
 // .example-dd {
 //   height: 30px;
 // }
+
+
+
 cdk-virtual-scroll-viewport {
   height: 70vh;
-  width: auto;
+  width: 80vw;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -152,11 +158,27 @@ cdk-virtual-scroll-viewport {
   justify-content: center;
   list-style: none;
   
+  .col {
+    padding: 0px !important;
+  }
 
-  li {
+  .btn {
+    padding-left: 15%;
+    padding-right: 15%;
+  }    
+
+  .mr-07 {
+    margin-right: 0.7rem;
+  }
+
+  button {
+    margin: 0.7rem;
+  }
+
+  .item-div {
     height: auto;
-    margin: 20px;
-    padding: 10px;
+    margin: 3vh;
+    padding: 1.5vh;
     background: whitesmoke;
     border-radius: 10px;
     word-break: break-all;

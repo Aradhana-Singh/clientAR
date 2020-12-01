@@ -136,7 +136,7 @@ svg{
       filter: url('#goo');
     }
     
-    &__blob:enabled {
+    &__blob {
       position: absolute;
       top: $borderW;
       width: 100% / $numOfBlobs;
