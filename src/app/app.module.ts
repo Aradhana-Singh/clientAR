@@ -80,7 +80,7 @@ import {SplitButtonModule} from 'primeng/splitbutton';
 import {RouterModule} from '@angular/router';
 import { ToastModule } from 'primeng/toast';
 import {TieredMenuModule} from 'primeng/tieredmenu';
-
+import {MultiSelectModule} from 'primeng/multiselect';
 
 // import { BasicScrollComponent } from './basic-scroll/basic-scroll.component';
 // import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
@@ -168,7 +168,8 @@ import {TieredMenuModule} from 'primeng/tieredmenu';
     SplitButtonModule,
     ToastModule,
     ScrollingModule,
-    TieredMenuModule
+    TieredMenuModule,
+    MultiSelectModule
   ],
   providers: [ CookieService, AuthService, AuthGuard, {
     provide : HTTP_INTERCEPTORS,
