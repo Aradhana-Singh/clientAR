@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 343 260" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <rect x="3.622" y="105.915" width="90" height="50" style="fill: rgb(128, 134, 139);"/>
+  <rect x="250.049" y="105.915" width="90" height="50" style="fill: rgb(128, 134, 139);"/>
+  <path d="M 534 292 m -86.876 0 a 86.876 86.876 0 1 0 173.752 0 a 86.876 86.876 0 1 0 -173.752 0 Z M 534 292 m -50 0 a 50 50 0 0 1 100 0 a 50 50 0 0 1 -100 0 Z" style="fill: rgb(128, 134, 139);" transform="matrix(-0.700932, 0.713229, -0.713229, -0.700932, 754.169344, -46.993498)" bx:shape="ring 534 292 50 50 86.876 86.876 1@242e398e"/>
+  <circle style="fill: rgb(255, 157, 76);" cx="171.608" cy="129.215" r="30"/>
+</svg>
