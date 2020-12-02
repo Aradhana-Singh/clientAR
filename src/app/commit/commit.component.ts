@@ -44,7 +44,7 @@ export class CommitComponent implements OnInit {
   displayModal: boolean;
   fileUploadModal: boolean;
   file = null;
-
+  public storedTheme = localStorage.getItem('theme-color');
   constructor(private messageService: MessageService,private http:HttpClient) { 
   }
   onSubmit(){

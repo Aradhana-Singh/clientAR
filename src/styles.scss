@@ -1,6 +1,6 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import '~primeicons/primeicons.css';
-@import '~primeng/resources/themes/saga-blue/theme.css';
+// @import '~primeng/resources/themes/saga-blue/theme.css';
 @import '~primeng/resources/primeng.min.css';
 @import '~animate.css/animate.min';
 
@@ -30,6 +30,7 @@ body {
 }
 body.theme-dark{
   background-color: #1e1f20;
+  
 }
 
 label{

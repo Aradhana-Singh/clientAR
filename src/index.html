@@ -5,7 +5,24 @@
   <title>ClientAR</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="favicon.ico"> 
+  <!-- <script>
+    const theme = localStorage.getItem('theme-color');
+    if(theme == 'theme-dark'){
+    var head = document.getElementsByTagName('HEAD')[0];  
+    var link = document.createElement('link'); 
+    link.rel = 'stylesheet';  
+    link.id = 'theme-css'
+    link.type = 'text/css'; 
+    link.href = './assets/css/arya-blue/theme.css';
+    }
+    
+      
+
+    // Append link element to HTML head 
+    head.appendChild(link); 
+  </script> -->
+  <!-- <link id="theme-css" rel="stylesheet" type="text/css" href="./assets/css/arya-blue/theme.css"> -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link
@@ -13,7 +30,23 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
 </head>
-<body class="mat-typography">
+<body class="mat-typography" onload="changeTheme()">
+  <link id="theme-css" rel="stylesheet" type="text/css" href="./assets/css/saga-blue/theme.css">
+  <script>
+    function swapStyleSheet(sheet) {
+      document.getElementById("theme-css").setAttribute("href", sheet);  
+  }
+  
+    function changeTheme(){
+      const theme = localStorage.getItem('theme-color');
+      document.getElementsByTagName('body')[0].setAttribute("class",theme);
+      if(theme == "theme-dark"){
+        swapStyleSheet("./assets/css/arya-blue/theme.css");
+      }
+      
+    }
+
+  </script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

@@ -8,9 +8,12 @@
 <div class="content {{storedTheme}}">
 	{{storedTheme}}
 	<div class="content-box">
-		Dark Theme Toggler:
-		<div class="theme-switcher-wrap">
-			<label class="theme-switcher" (click)="setTheme()">
+		<span>Dark Theme Toggler:</span>
+		<div class="theme-switcher-wrap">		
+			<label
+			[ngClass]="( storedTheme === 'theme-dark')?'theme-switcher
+			active':'theme-switcher'"
+			class="theme-switcher" (click)="setTheme()">
 				<div class="switch-path">
 					<div class="switch-handle"></div>
 				</div>
