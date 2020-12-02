@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
   public buttonClick = false;
   public index: number = 1;
   items: MenuItem[];
-
+  public defaulturl ='https://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/';
   constructor(private messageService: MessageService,private http:HttpClient, private cookieService: CookieService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -37,7 +37,7 @@ export class UserComponent implements OnInit {
       "username": this.email,
       "password": this.password
     };
-    let commiturl = 'http://localhost:8080/user/login'; 
+    let commiturl = this.defaulturl.concat('user/login'); 
     this.http.post<any>(commiturl,payload).subscribe(
       data => {
         this.cookieService.set("token",data.token);
@@ -62,7 +62,7 @@ export class UserComponent implements OnInit {
 
   validateUser(){
     console.log(this.password + " " + this.email);
-    let commiturl = 'http://localhost:8080/user/check-existence?email=' + this.email; 
+    let commiturl = this.defaulturl.concat('user/check-existence?email=') + this.email; 
     this.http.get<any>(commiturl).subscribe(
       data => {
         console.log('Success',data);
@@ -89,7 +89,7 @@ export class UserComponent implements OnInit {
       "email": this.email,
       "password": this.password
     };
-    let commiturl = 'http://localhost:8080/user/sign-up';
+    let commiturl = this.defaulturl.concat('user/sign-up');
     this.buttonClick = true;
     this.http.post<any>(commiturl,payload).subscribe(
       data => {

@@ -82,7 +82,7 @@ svg{
   position: absolute;
 }
 
-.blob1-btn{
+.blob1-btn:enabled{
   $numOfBlobs: 4;
   z-index: 1;
   position: relative;
@@ -97,10 +97,10 @@ svg{
   outline: none;
   border: none;
   transition: color 0.5s;
-  cursor: pointer;
   border-radius:30px;
-  
-  &:before {
+ 
+
+  &:before:disabled {
     content: "";
     z-index: 1;
     position: absolute;
@@ -110,9 +110,22 @@ svg{
     height: 100%;
     border: $borderW solid  #ff9d4c;
     border-radius:30px;
+    cursor: default;
+  }
+  &:before {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: $borderW solid #ff9d4c ;
+    border-radius:30px;
+    cursor: pointer;
   }
   
-  &:after {
+  &:after:enabled {
     content: "";
     z-index: -2;
     position: absolute;
@@ -120,21 +133,25 @@ svg{
     top: $borderW*1.5;
     width: 100%;
     height: 100%;
-
+    cursor: pointer;
     transition: all 0.3s 0.2s;
     border-radius:30px;
   }
   
-  &:hover {
+  &:hover:enabled {
     color: $dark;
     border-radius:30px;
     
-    &:after {
+    &:after:enabled {
       transition: all 0.3s;
       left: 0;
       top: 0;
       border-radius:30px;
     }
+  }
+  &:hover:disabled{
+    border-radius:30px;
+
   }
   
   &__inner {
@@ -179,6 +196,130 @@ svg{
     }
     
     .blob1-btn:hover & {
+      transform: translateZ(0) scale(1.7);
+      
+      @supports(filter: url('#goo')) {
+        transform: translateZ(0) scale(1.4);
+      }
+    }
+  }
+  
+}
+
+.blob1-btn{
+  $numOfBlobs: 4;
+  z-index: 1;
+  position: relative;
+  padding: 10px 46px;
+  margin-bottom: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  color:  #ff9d4c;
+  font-size: 16px;
+  font-weight: bold;
+  background-color:  #ff9d4c !important;
+  outline: none;
+  border: none;
+  transition: color 0.5s;
+  border-radius:30px;
+  cursor: default;
+
+  &:before:disabled {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: $borderW solid  #ff9d4c;
+    border-radius:30px;
+    cursor: default;
+  }
+  &:before {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: $borderW solid #ff9d4c ;
+    border-radius:30px;
+  }
+  
+  &:after:enabled {
+    content: "";
+    z-index: -2;
+    position: absolute;
+    left: $borderW*1.5;
+    top: $borderW*1.5;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.3s 0.2s;
+    border-radius:30px;
+  }
+  
+  &:hover:enabled {
+    color: $dark;
+    border-radius:30px;
+    
+    &:after:enabled {
+      transition: all 0.3s;
+      left: 0;
+      top: 0;
+      border-radius:30px;
+    }
+    &:hover:disabled{
+      border-radius:30px;
+
+    }
+  }
+  
+  
+  &__inner {
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius:30px;
+    background:#ffffff;
+  }
+  
+  // additional container created, because in FF blobs are breaking overflow:hidden of element with svg gooey filter
+  &__blobs1 {
+    position: relative;
+    display: block;
+    height: 100%;
+    filter: url('#goo');
+  }
+  
+  &__blob1 {
+    position: absolute;
+    top: $borderW;
+    width: 100% / $numOfBlobs;
+    height: 100%;
+    background: #ff9d4c;
+    border-radius: 100%;
+    transform: translate3d(0,150%,0) scale(1.7);
+    transition: transform 0.45s;
+    
+    @supports(filter: url('#goo')) {
+      transform: translate3d(0,150%,0) scale(1.4);
+    }
+    
+    @for $i from 1 through $numOfBlobs {
+      &:nth-child(#{$i}) {
+        left: ($i - 1) * (120% / $numOfBlobs);
+        transition-delay: ($i - 1) * 0.08s;
+      }
+    }
+    
+    .blob1-btn:hover:enabled & {
       transform: translateZ(0) scale(1.7);
       
       @supports(filter: url('#goo')) {
