@@ -1,38 +1,46 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink = "/home" href="#"><span class="text-navy">Auto</span><span class="text-ocean font-weight-bold">Buds</span><span class="text-orange font-weight-bold">3</span></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav nav ml-auto nav-pills nav-fill">
-        <li class="nav-item px-3">
-          <a class="nav-link " data-toggle="pill" [routerLink] = "['home']" [routerLinkActive]="['selected']" [routerLinkActiveOptions]="{exact: true}" >Home </a>
-        </li>
-        <li class="nav-item px-3">
-          <a class="nav-link" data-toggle="pill" [routerLink] = "['commit']" [routerLinkActive]="['selected']" [routerLinkActiveOptions]="{exact: true}">Commit</a>
-        </li>
-        <li class="nav-item px-3">
-          <a class="nav-link" data-toggle="pill" [routerLink] = "['deploy']" [routerLinkActive]="['selected']">Deploy</a>
-        </li>
-        <!-- <li class="nav-item px-3">
-            <a class="nav-link" data-toggle="pill" routerLink = "/settings" routerLinkActive="register" href="#Register">Settings</a>
-        </li>
-
-        <li class="nav-item px-3" (click)="logout()">
-          <a class="nav-link" data-toggle="pill" routerLinkActive="register" href="#Logout">Logout</a>
-        </li> -->
-
-        <li class="nav-item px-3">
-          <img src="assets/images/profile.png" (click)="menu.toggle($event)"/>
-        </li>
-        <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
-      </ul>
-    </div>
-    
-    
-    
-  </nav>
-  
-
-  
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light {{storedTheme}}">
+  <a class="navbar-brand" routerLink = "/home" href="#"><span class="text-navy {{storedTheme}}">Auto</span><span class="text-ocean font-weight-bold">Buds</span><span class="text-orange font-weight-bold">3</span></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+ 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav nav ml-auto nav-pills nav-fill {{storedTheme}}">
+      <li class="nav-item px-3">
+        <a class="nav-link " data-toggle="pill" [routerLink] = "['home']" [routerLinkActive]="['selected']" [routerLinkActiveOptions]="{exact: true}" >Home </a>
+      </li>
+      <li class="nav-item px-3">
+        <a class="nav-link" data-toggle="pill" [routerLink] = "['commit']" [routerLinkActive]="['selected']" [routerLinkActiveOptions]="{exact: true}">Commit</a>
+      </li>
+      <li class="nav-item px-3">
+        <a class="nav-link" data-toggle="pill" [routerLink] = "['deploy']" [routerLinkActive]="['selected']">Deploy</a>
+      </li>
+      <!-- <li class="nav-item px-3">
+          <a class="nav-link" data-toggle="pill" routerLink = "/settings" routerLinkActive="register" href="#Register">Settings</a>
+      </li>
+ 
+      <li class="nav-item px-3" (click)="logout()">
+        <a class="nav-link" data-toggle="pill" routerLinkActive="register" href="#Logout">Logout</a>
+      </li> -->
+ 
+      <li class="nav-item px-3">
+        <img src="assets/images/profile.png" (click)="menu.toggle($event)"/>
+      </li>
+      <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
+    </ul>
+  </div>  
+</nav>
+ 
+<div *ngIf = "progress">
+  <p-progressBar mode="indeterminate"></p-progressBar>
+</div>
+ 
+<p-toast [baseZIndex]="15000"></p-toast>
+ 
+<p-dialog [(visible)]="displayModal" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000"
+  [draggable]="false" [resizable]="false">
+  <div class="p-inputgroup">
+    <input type="text" pInputText [(ngModel)] = "webhook_url" placeholder="Enter Webhook Url">   
+    <button type="button" pButton pRipple icon="pi pi-paperclip" styleClass="p-button-warn" (click)="addWebhookUrl()"></button>      
+  </div>
+</p-dialog>

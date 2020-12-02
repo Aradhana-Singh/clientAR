@@ -22,10 +22,11 @@ interface Repo{
 })
 
 export class CommitComponent implements OnInit {
-  public listrepourl ='http://localhost:8080/git/list-repos/';
-  public sfurl = 'http://localhost:8080/org/list-orgs';
-  public accurl = 'http://localhost:8080/git/list-accounts';
-  public commiturl = 'http://localhost:8080/git/commit';
+  public defaulturl ='https://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/';
+  public listrepourl = this.defaulturl.concat('git/list-repos/') ;
+  public sfurl = this.defaulturl.concat('org/list-orgs') ;
+  public accurl = this.defaulturl.concat('git/list-accounts');
+  public commiturl = this.defaulturl.concat('git/commit');
   public orgs: string [] = [];
   public repos: string [] = [];
   public gitaccs: string [] = [];
@@ -128,7 +129,7 @@ export class CommitComponent implements OnInit {
       const formdata: FormData = new FormData();
       formdata.append('file', this.file);
       formdata.append('org_id', this.selectedOrg.org_id);
-      this.http.post("http://localhost:8080/git/addFile", formdata,{headers:{skip:"true"}}).subscribe(
+      this.http.post("http://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/git/addFile", formdata,{headers:{skip:"true"}}).subscribe(
         (data)=>{
           console.log(data);
           this.messageService.add({severity: "success", summary:'File Uploaded'});

@@ -68,12 +68,15 @@ export class DeployComponent implements OnInit {
   }
 
   
-  public sfurl = 'http://localhost:8080/org/list-orgs';
-  public commithistoryurl = 'http://localhost:8080/git/commit-history';
-  public deployUrl = 'http://localhost:8080/git/test-deploy';
+ 
   // public orgs: string [] = [];
   public orgs: Org[];
   public selectedOrgs: Org[];
+  public defaulturl = 'https://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/';
+  public sfurl = this.defaulturl.concat('org/list-orgs');
+  public commithistoryurl = this.defaulturl.concat('git/commit-history');
+  public deployUrl = this.defaulturl.concat('git/test-deploy');
+
   public repos: string [] = [];
   public gitaccs: string [] = [];
   public commithistory: string []= [];
