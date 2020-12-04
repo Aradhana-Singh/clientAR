@@ -1,26 +1,26 @@
 <div class="container">
 	<div class="row ch">
+			<div class="content {{storedTheme}}">
+				<div class="content-box">
+					<div class="theme-switcher-wrap">		
+						<label
+						[ngClass]="( storedTheme === 'theme-dark')?'theme-switcher
+						active':'theme-switcher'"
+						class="theme-switcher" (click)="setTheme()">
+							<div class="switch-path">
+								<div class="switch-handle"></div>
+							</div>
+						</label>
+					</div>
+				</div>
+			</div>
 		<div class="text-typing">
 			<h1 class="mx-auto my-auto text-ocean">Welcome Folks!</h1>
 		  </div>
 	</div>
 </div>
-<div class="content {{storedTheme}}">
-	{{storedTheme}}
-	<div class="content-box">
-		<span>Dark Theme Toggler:</span>
-		<div class="theme-switcher-wrap">		
-			<label
-			[ngClass]="( storedTheme === 'theme-dark')?'theme-switcher
-			active':'theme-switcher'"
-			class="theme-switcher" (click)="setTheme()">
-				<div class="switch-path">
-					<div class="switch-handle"></div>
-				</div>
-			</label>
-		</div>
-	</div>
-</div>
+
+
 
 
 

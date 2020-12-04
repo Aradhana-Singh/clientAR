@@ -41,9 +41,10 @@
 
   .theme-switcher-wrap{
     width:100%;
-    text-align:left;
+    text-align:right;
+    margin-top: 20px;
     .theme-switcher{
-      display: inline-block;
+      display:inline-block;
       cursor:pointer;
       .switch-path{
         width: 40px;
@@ -88,3 +89,14 @@
 
     }
   }
+
+  :host{
+    ::ng-deep{
+      p-card{
+        width:100%;
+        margin-top:2rem;
+      }
+
+    }
+  }
+

@@ -3253,9 +3253,9 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
-.p-fileupload .p-progressbar {
+/* .p-fileupload .p-progressbar {
   height: 0.25rem;
-}
+} */
 .p-fileupload .p-fileupload-row > div {
   padding: 1rem 1rem;
 }
@@ -4486,7 +4486,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
   box-shadow: 0 0 0 1px #0293cc;
 }
 
-.p-progressbar {
+/* .p-progressbar {
   border: 0 none;
   height: 1.5rem;
   background: #383838;
@@ -4500,7 +4500,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-progressbar .p-progressbar-label {
   color: rgba(255, 255, 255, 0.87);
   line-height: 1.5rem;
-}
+} */
 
 .p-terminal {
   background: #1e1e1e;

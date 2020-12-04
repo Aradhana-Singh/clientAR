@@ -19,8 +19,8 @@ export class NavbarComponent implements OnInit, DoCheck {
   items: MenuItem[];
   @ViewChild('menu') menu: Menu;
  
-  getUser = "https://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/user/get-user";
-  addWebHook = "https://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/org/add-webhook";
+  getUser = "http://localhost:8080/user/get-user";
+  addWebHook = "http://localhost:8080/org/add-webhook";
  
   public full_name = "";
   public webhook_url = "";
@@ -51,12 +51,12 @@ export class NavbarComponent implements OnInit, DoCheck {
       console.log(this.full_name);
  
       this.items = [
-        // {
-        //   label: this.full_name
-        // },
-        // {
-        //   separator: true
-        // },
+        {
+          label: this.full_name
+        },
+        {
+          separator: true
+        },
         {
           label: "Add Webhook",
           icon: "pi pi-fw pi-paperclip",
@@ -87,37 +87,7 @@ export class NavbarComponent implements OnInit, DoCheck {
 
   ngOnInit(): void {
       this.getUserName();
-      this.items = [
-        // {
-        //   label: this.full_name
-        // },
-        // {
-        //   separator: true
-        // },
-        {
-          label: "Add Webhook",
-          icon: "pi pi-fw pi-paperclip",
-          command: (event) => {
-            this.displayModal = true;
-            this.menu.toggle(event);
-          }
-        },
- 
-        {
-          label: "Settings",
-          icon: "pi pi-fw pi-cog",
-          command: (event) => {
-            this.router.navigate(['/settings']);
-            this.menu.toggle(event);
-          }
-        },
- 
-        {
-          label: "Logout",
-          icon: "pi pi-fw pi-power-off",
-          command: () => this.logout()
-        }
-      ];
+      
       
       
 }

@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
   public buttonClick = false;
   public index: number = 1;
   items: MenuItem[];
-  public defaulturl ='https://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/';
+  public defaulturl ='http://localhost:8080/';
   constructor(private messageService: MessageService,private http:HttpClient, private cookieService: CookieService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -44,10 +44,8 @@ export class UserComponent implements OnInit {
         console.log(data.token);
         this.messageService.add({severity: "success", summary:'Success', detail:'Successfully Logged in'});
         this.buttonClick = true;
-        setTimeout(() => {
-          this.buttonClick = false;
-          this.router.navigate(['/home']);
-        }, 1000);
+        this.buttonClick = false;
+        this.router.navigate(['/home']);   
       },
       error => {
         console.error('Error', error);

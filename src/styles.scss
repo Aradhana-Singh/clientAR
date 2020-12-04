@@ -23,13 +23,14 @@
 body { 
     margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
     background-color: #ffffff;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900' opacity='0.8' %3E%3Cpolygon fill='%23f39800' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23ff9f00' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%23dc9745' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%23eaa14c' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23c2976b' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23d1a377' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23a3968d' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23b1a49e' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%237895ae' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%2384a6c4' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%230094cf' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%2300a8eb' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900' opacity='0.8' %3E%3Cpolygon fill='%23f39800' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='rgb(252, 165, 56)' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%23dc9745' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%23eaa14c' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23c2976b' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23d1a377' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23a3968d' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23b1a49e' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%237895ae' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%2384a6c4' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%230094cf' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%2300a8eb' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
     // background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%23dc9745' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%23eaa14c' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23c2976b' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23d1a377' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23a3968d' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23b1a49e' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%237895ae' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%2384a6c4' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%230094cf' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%2300a8eb' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
     background-attachment: fixed;
     background-size: cover;
 }
 body.theme-dark{
-  background-color: #1e1f20;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%23a0a08d' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23696c5d' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%23e2e2dd' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%236d6d6c' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23797a72' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%2359595a' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23979796' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%235d5d68' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%234d5045' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%237f7d98' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%2361655d' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23a6a5b7' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+background-color: #1e1f20;
   
 }
 
@@ -102,7 +103,7 @@ svg{
  
     &:before {
       content: "";
-      z-index: 1;
+      z-index: -1;
       position: absolute;
       left: 0;
       top: 0;
@@ -152,7 +153,7 @@ svg{
       width: 100%;
       height: 100%;
       border-radius:30px;
-      background:#ffffff;
+      background:none !important;
     }
     
     // additional container created, because in FF blobs are breaking overflow:hidden of element with svg gooey filter
@@ -275,7 +276,7 @@ svg{
       width: 100%;
       height: 100%;
       border-radius:30px;
-      background:#ffffff;
+      background:transparent;
     }
     
     // additional container created, because in FF blobs are breaking overflow:hidden of element with svg gooey filter

@@ -24,7 +24,7 @@
       </li> -->
  
       <li class="nav-item px-3">
-        <img src="assets/images/profile.png" (click)="menu.toggle($event)"/>
+        <img src="assets/images/profile.png" class="imgcenter" (click)="menu.toggle($event)"/>
       </li>
       <p-tieredMenu class="{{storedTheme}}"  #menu [model]="items" [popup]="true"></p-tieredMenu>
     </ul>

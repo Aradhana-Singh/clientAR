@@ -72,7 +72,7 @@ export class DeployComponent implements OnInit {
   // public orgs: string [] = [];
   public orgs: Org[];
   public selectedOrgs: Org[];
-  public defaulturl = 'https://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/';
+  public defaulturl = 'http://localhost:8080/';
   public sfurl = this.defaulturl.concat('org/list-orgs');
   public commithistoryurl = this.defaulturl.concat('git/commit-history');
   public deployUrl = this.defaulturl.concat('git/test-deploy');

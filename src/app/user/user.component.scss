@@ -17,6 +17,14 @@
             .p-card-content {
                 padding: 0rem !important;
             }
+            .p-progressbar .p-progressbar-value {
+                background: #00a8eb;
+              }
+              
+              .p-progressbar {
+                background: #ff9d4c;
+                height: 0.1rem;
+              }
 
             box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
         }
