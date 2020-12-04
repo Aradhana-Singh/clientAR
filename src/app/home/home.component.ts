@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
       this.storedTheme = localStorage.getItem('theme-color');
       this.bodyTag.classList.remove('theme-dark');
       this.bodyTag.classList.add('theme-light');
+      window.location.reload();
       // document.documentElement.setAttribute('color-theme','theme-dark');
     }
     else{
@@ -30,7 +31,7 @@ export class HomeComponent implements OnInit {
       this.storedTheme = localStorage.getItem('theme-color');
       this.bodyTag.classList.remove('theme-light');
       this.bodyTag.classList.add('theme-dark');
-      
+      window.location.reload();
       // this.bodyTag.setAttribute('color-theme',this.storedTheme);
     }
   }

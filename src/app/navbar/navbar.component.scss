@@ -29,18 +29,6 @@
     }
 }
 
-:host {
-  ::ng-deep {
-    .p-dialog-header {
-      justify-content: flex-end;
-      padding: 0.5rem;
-    }
-    .p-dialog-content {
-      overflow-y: visible;
-    }
-  }
-}
-
 .horizontalMenu:active{
     border: black;
 }
