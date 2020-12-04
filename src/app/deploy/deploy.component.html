@@ -13,7 +13,7 @@
       
         <div class="row m-0">
 
-          <div class="col-sm-3">
+          <div class="p-0 col-sm-3">
             <div class="p-2 flex-fill bd-highlight"><img class="mr-07" src="assets/images/time.png">{{i.timestamp | date:'mediumDate'}}, {{i.timestamp | date:'mediumTime'}}</div>
             <div class="p-2 flex-fill bd-highlight"><img class="mr-07" src="assets/images/org.png">{{i.nick_name}} </div>
           </div>
@@ -75,15 +75,15 @@
       </p-multiSelect>
 
       <ng-template pTemplate="footer">
-        <div class="buttons1" (click)="onDeploy()">
-          <button class="blob1-btn submit" >
+        <div class="buttons" (click)="onDeploy()">
+          <button class="blob-btn submit" >
             Ok
-            <span class="blob1-btn__inner ">
-              <span class="blob1-btn__blobs1 ">
-                <span class="blob1-btn__blob1 "></span>
-                <span class="blob1-btn__blob1 "></span>
-                <span class="blob1-btn__blob1 "></span>
-                <span class="blob1-btn__blob1 "></span>
+            <span class="blob-btn__inner ">
+              <span class="blob-btn__blobs ">
+                <span class="blob-btn__blob "></span>
+                <span class="blob-btn__blob "></span>
+                <span class="blob-btn__blob "></span>
+                <span class="blob-btn__blob "></span>
               </span>
             </span>
           </button>
