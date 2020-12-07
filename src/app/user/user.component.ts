@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
   public buttonClick = false;
   public index: number = 1;
   items: MenuItem[];
-  public defaulturl ='http://localhost:8080/';
+  public defaulturl ='https://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/';
   constructor(private messageService: MessageService,private http:HttpClient, private cookieService: CookieService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {

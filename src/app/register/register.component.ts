@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
   public gitaccs: string [] = [];
   public selectedOrg;
   public selectedAcc;
-  public defaulturl = 'http://localhost:8080/'
+  public defaulturl = 'https://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/'
   public sfurl = this.defaulturl.concat('org/list-orgs');
   public accurl = this.defaulturl.concat('git/list-accounts');
   constructor(private http:HttpClient) { 

@@ -19,8 +19,8 @@ export class NavbarComponent implements OnInit, DoCheck {
   items: MenuItem[];
   @ViewChild('menu') menu: Menu;
  
-  getUser = "http://localhost:8080/user/get-user";
-  addWebHook = "http://localhost:8080/org/add-webhook";
+  getUser = "https://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/user/get-user";
+  addWebHook = "https://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/org/add-webhook";
  
   public full_name = "";
   public webhook_url = "";
