@@ -10,6 +10,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { Page404Component } from './page404/page404.component';
 import { FutureScopeComponent } from './future-scope/future-scope.component';
 import { DeployComponent } from './deploy/deploy.component';
+import { OauthComponent } from './oauth/oauth.component';
 
 const routes: Routes = [
   {path: '' , redirectTo:"/home", pathMatch:"full" },
@@ -25,7 +26,8 @@ const routes: Routes = [
       {path: 'commit', component: CommitComponent, canActivate: [AuthGuard]},
       {path: 'settings', component: RegisterComponent, canActivate: [AuthGuard]},
       {path: 'future', component: FutureScopeComponent, canActivate: [AuthGuard]},
-      {path: 'deploy', component:DeployComponent, canActivate: [AuthGuard]}
+      {path: 'deploy', component:DeployComponent, canActivate: [AuthGuard]},
+      {path: 'oauth', component:OauthComponent}
     ]
   },
   {

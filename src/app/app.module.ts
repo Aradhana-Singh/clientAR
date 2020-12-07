@@ -81,6 +81,7 @@ import {RouterModule} from '@angular/router';
 import { ToastModule } from 'primeng/toast';
 import {TieredMenuModule} from 'primeng/tieredmenu';
 import {MultiSelectModule} from 'primeng/multiselect';
+import { OauthComponent } from './oauth/oauth.component';
 
 // import { BasicScrollComponent } from './basic-scroll/basic-scroll.component';
 // import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
@@ -98,6 +99,7 @@ import {MultiSelectModule} from 'primeng/multiselect';
     Page404Component,
     FutureScopeComponent,
     DeployComponent,
+    OauthComponent,
     // BasicScrollComponent,
     // InfiniteScrollComponent
   ],
