@@ -82,6 +82,8 @@ import { ToastModule } from 'primeng/toast';
 import {TieredMenuModule} from 'primeng/tieredmenu';
 import {MultiSelectModule} from 'primeng/multiselect';
 import { OauthComponent } from './oauth/oauth.component';
+import { StoreModule } from '@ngrx/store';
+import {reducer} from './loadingbar/loadingbar.reducer'
 
 // import { BasicScrollComponent } from './basic-scroll/basic-scroll.component';
 // import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
@@ -171,7 +173,8 @@ import { OauthComponent } from './oauth/oauth.component';
     ToastModule,
     ScrollingModule,
     TieredMenuModule,
-    MultiSelectModule
+    MultiSelectModule,
+    StoreModule.forRoot({ spinner: reducer })
   ],
   providers: [ CookieService, AuthService, AuthGuard, {
     provide : HTTP_INTERCEPTORS,

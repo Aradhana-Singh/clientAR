@@ -7,6 +7,7 @@ import { map, tap, scan, mergeMap, throttleTime } from 'rxjs/operators';
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { select, Store } from '@ngrx/store';
 
 
 interface Org {
@@ -72,7 +73,7 @@ export class DeployComponent implements OnInit {
   // public orgs: string [] = [];
   public orgs: Org[];
   public selectedOrgs: Org[];
-  public defaulturl = 'https://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/';
+  public defaulturl = 'http://localhost:8080/';
   public sfurl = this.defaulturl.concat('org/list-orgs');
   public commithistoryurl = this.defaulturl.concat('git/commit-history');
   public deployUrl = this.defaulturl.concat('git/test-deploy');
@@ -92,6 +93,7 @@ export class DeployComponent implements OnInit {
   public commitSuccess = false;
   public success = false;
   public progress = false;
+  loadingbar$: Observable<boolean>;
   displayPosition: boolean;
   displayModal: boolean;
   position: string;
@@ -109,9 +111,10 @@ export class DeployComponent implements OnInit {
     }​​​​​);
   }​​​​​
 
-  constructor(private messageService: MessageService,private http:HttpClient) { }
+  constructor(private messageService: MessageService,private http:HttpClient, private store: Store<any>) { }
 
   ngOnInit(): void {
+    this.loadingbar$ = this.store.pipe(select(state => state.spinner.isOn)); 
     let Chresponse = this.http.get<any>(this.commithistoryurl,{withCredentials:true});
     Chresponse.subscribe((data)=>{
       this.commithistory = data;
@@ -171,7 +174,8 @@ export class DeployComponent implements OnInit {
       //   withCredentials: true
       // }).toPromise()); 
 
-      this.progress =true;
+      // this.progress =true;
+      this.store.dispatch({ type: 'startSpinner' });
       let result;
       try
       {
@@ -188,7 +192,8 @@ export class DeployComponent implements OnInit {
         console.log(result);
       }
         
-      this.progress = false;
+      // this.progress = false;
+      this.store.dispatch({ type: 'stopSpinner' });
 
       console.log(result);
 

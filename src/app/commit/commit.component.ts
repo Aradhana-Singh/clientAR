@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { MessageService } from 'primeng/api';
+import { Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
 
 
 interface Org{
@@ -22,7 +24,7 @@ interface Repo{
 })
 
 export class CommitComponent implements OnInit {
-  public defaulturl ='https://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/';
+  public defaulturl ='http://localhost:8080/';
   public listrepourl = this.defaulturl.concat('git/list-repos/') ;
   public sfurl = this.defaulturl.concat('org/list-orgs') ;
   public accurl = this.defaulturl.concat('git/list-accounts');
@@ -45,10 +47,11 @@ export class CommitComponent implements OnInit {
   fileUploadModal: boolean;
   file = null;
   public storedTheme = localStorage.getItem('theme-color');
-  constructor(private messageService: MessageService,private http:HttpClient) { 
+  loadingbar$: Observable<boolean>;
+  constructor(private messageService: MessageService,private http:HttpClient, private store: Store<any>) { 
   }
   onSubmit(){
-    this.buttonClick = true;
+    this.store.dispatch({ type: 'startSpinner' });
     let payload = {
       "org_id":this.selectedOrg.org_id,
       "acc_id":this.selectedAcc.id,
@@ -66,13 +69,13 @@ export class CommitComponent implements OnInit {
       withCredentials: true
     }).subscribe(
       data => {
-        this.buttonClick = false;
+        this.store.dispatch({ type: 'stopSpinner' });
         this.success = true;
         this.messageService.add({severity: "success", summary:'Done', detail:'Commit Successful'});
       },
       error => {
         console.error('Error', error);
-        this.buttonClick = false;
+        this.store.dispatch({ type: 'stopSpinner' });
         this.messageService.add({severity: "error", summary:'Error', detail:'Something went wrong'});
       }
       
@@ -97,7 +100,7 @@ export class CommitComponent implements OnInit {
   }
 
   ngOnInit(): void {
-     
+    this.loadingbar$ = this.store.pipe(select(state => state.spinner.isOn)); 
     let Sfresponse = this.http.get<any>(this.sfurl,{withCredentials:true});
     Sfresponse.subscribe((data)=>{
       console.log(data);
@@ -129,7 +132,7 @@ export class CommitComponent implements OnInit {
       const formdata: FormData = new FormData();
       formdata.append('file', this.file);
       formdata.append('org_id', this.selectedOrg.org_id);
-      this.http.post("https://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/git/addFile", formdata,{headers:{skip:"true"}}).subscribe(
+      this.http.post("http://localhost:8080/git/addFile", formdata,{headers:{skip:"true"}}).subscribe(
         (data)=>{
           console.log(data);
           this.messageService.add({severity: "success", summary:'File Uploaded'});

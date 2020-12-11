@@ -7,6 +7,7 @@ import {HttpClient,HttpHeaders,HttpParams} from '@angular/common/http'
 import { Menu, MenuModule } from 'primeng/menu';
 import { MessageService } from 'primeng/api';
 import { Observable, Subject } from 'rxjs';
+import { select, Store } from '@ngrx/store';
  
 
 @Component({
@@ -19,14 +20,15 @@ export class NavbarComponent implements OnInit, DoCheck {
   items: MenuItem[];
   @ViewChild('menu') menu: Menu;
  
-  getUser = "https://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/user/get-user";
-  addWebHook = "https://ec2-13-234-37-228.ap-south-1.compute.amazonaws.com/org/add-webhook";
+  getUser = "http://localhost:8080/user/get-user";
+  addWebHook = "http://localhost:8080/org/add-webhook";
  
   public full_name = "";
   public webhook_url = "";
   public displayModal = false;
   public progress = false;
   public storedTheme: string;
+  loadingbar$: Observable<boolean>;
   getTheme(){
     this.storedTheme = localStorage.getItem('theme-color');
     console.log(this.storedTheme);
@@ -34,7 +36,7 @@ export class NavbarComponent implements OnInit, DoCheck {
   
   
  
-  constructor(private authService: AuthService, private router: Router, private http:HttpClient, private messageService: MessageService) { }
+  constructor(private authService: AuthService, private router: Router, private http:HttpClient, private messageService: MessageService, private store: Store<any>) { }
  
   getUserName() 
   {
@@ -86,6 +88,7 @@ export class NavbarComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
+    this.loadingbar$ = this.store.pipe(select(state => state.spinner.isOn));
       this.getUserName();
       
       
