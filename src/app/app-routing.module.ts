@@ -27,7 +27,7 @@ const routes: Routes = [
       {path: 'settings', component: RegisterComponent, canActivate: [AuthGuard]},
       {path: 'future', component: FutureScopeComponent, canActivate: [AuthGuard]},
       {path: 'deploy', component:DeployComponent, canActivate: [AuthGuard]},
-      {path: 'oauth', component:OauthComponent}
+      {path: 'oauth/:type', component:OauthComponent}
     ]
   },
   {
