@@ -98,6 +98,8 @@ export class DeployComponent implements OnInit {
   displayModal: boolean;
   position: string;
   public right = "right";
+  filteredStatus = '';
+  public storedTheme: string;
  
   
   
@@ -115,6 +117,7 @@ export class DeployComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadingbar$ = this.store.pipe(select(state => state.spinner.isOn)); 
+    this.storedTheme = localStorage.getItem('theme-color');
     let Chresponse = this.http.get<any>(this.commithistoryurl,{withCredentials:true});
     Chresponse.subscribe((data)=>{
       this.commithistory = data;

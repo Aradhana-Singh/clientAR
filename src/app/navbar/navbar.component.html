@@ -1,3 +1,4 @@
+
 <div *ngIf = "loadingbar$ | async">
   <p-progressBar mode="indeterminate"></p-progressBar>
 </div>
@@ -8,15 +9,15 @@
   </button>
  
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav nav ml-auto nav-pills nav-fill {{storedTheme}}">
+    <ul class="navbar-nav nav ml-auto nav-pills {{storedTheme}}" id="rowTab">
       <li class="nav-item px-3">
-        <a class="nav-link " data-toggle="pill" [routerLink] = "['home']" [routerLinkActive]="['selected']" [routerLinkActiveOptions]="{exact: true}" >Home </a>
+        <a class="nav-link" id="home" data-toggle="pill"  role="tab" aria-controls="pills-home" aria-selected="true" [routerLink] = "['home']" [routerLinkActive]="['selected']" [routerLinkActiveOptions]="{exact: true}" (click)="saveTabSelect('home')">Home </a>
       </li>
       <li class="nav-item px-3">
-        <a class="nav-link" data-toggle="pill" [routerLink] = "['commit']" [routerLinkActive]="['selected']" [routerLinkActiveOptions]="{exact: true}">Commit</a>
+        <a class="nav-link" id="commit" data-toggle="pill"  role="tab" aria-controls="pills-commit" aria-selected="true" [routerLink] = "['commit']" [routerLinkActive]="['selected']" [routerLinkActiveOptions]="{exact: true}"(click)="saveTabSelect('commit')">Commit</a>
       </li>
       <li class="nav-item px-3">
-        <a class="nav-link" data-toggle="pill" [routerLink] = "['deploy']" [routerLinkActive]="['selected']">Deploy</a>
+        <a class="nav-link" id="deploy" data-toggle="pill"  role="tab" aria-controls="pills-deploy" aria-selected="true" [routerLink] = "['deploy']" [routerLinkActive]="['selected']"(click)="saveTabSelect('deploy')">Deploy</a>
       </li>
       <!-- <li class="nav-item px-3">
           <a class="nav-link" data-toggle="pill" routerLink = "/settings" routerLinkActive="register" href="#Register">Settings</a>
@@ -27,12 +28,13 @@
       </li> -->
  
       <li class="nav-item px-3">
-        <img src="assets/images/profile.png" class="imgcenter" (click)="menu.toggle($event)"/>
+        <img src="assets/images/profile.png" class="imgcenter" style="cursor: pointer;" (click)="menu.toggle($event)"/>
       </li>
       <p-tieredMenu class="{{storedTheme}}"  #menu [model]="items" [popup]="true"></p-tieredMenu>
     </ul>
   </div>  
 </nav>
+
  
 <div *ngIf = "progress">
   <p-progressBar mode="indeterminate"></p-progressBar>

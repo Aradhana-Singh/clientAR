@@ -31,7 +31,6 @@ export class NavbarComponent implements OnInit, DoCheck {
   loadingbar$: Observable<boolean>;
   getTheme(){
     this.storedTheme = localStorage.getItem('theme-color');
-    console.log(this.storedTheme);
   }
   
   
@@ -87,10 +86,24 @@ export class NavbarComponent implements OnInit, DoCheck {
  
   }
 
+  saveTabSelect(e) {
+    console.log("From Navbar", e);
+
+    localStorage.setItem("tagSelected", e);
+    return true;
+  }
+
+  retrieveSelected(){
+    console.log("Tring to fix!")
+    var curTag = localStorage.getItem("tagSelected");
+    var element = document.getElementById(curTag);
+    element.classList.add("active"); 
+  }
+
   ngOnInit(): void {
     this.loadingbar$ = this.store.pipe(select(state => state.spinner.isOn));
-      this.getUserName();
-      
+    this.getUserName();
+    this.retrieveSelected();
       
       
 }

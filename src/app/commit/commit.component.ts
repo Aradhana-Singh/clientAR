@@ -103,13 +103,13 @@ export class CommitComponent implements OnInit {
     this.loadingbar$ = this.store.pipe(select(state => state.spinner.isOn)); 
     let Sfresponse = this.http.get<any>(this.sfurl,{withCredentials:true});
     Sfresponse.subscribe((data)=>{
-      console.log(data);
+      // console.log(data);
       this.orgs = data;
     });
 
     let GitAccresponse = this.http.get<any>(this.accurl,{withCredentials: true});
     GitAccresponse.subscribe((data)=>{
-      console.log(data);
+      // console.log(data);
       this.gitaccs = data;
     })
   } 

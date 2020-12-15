@@ -1,7 +1,8 @@
 .container {
-  margin-top: 9vh;
+  margin-top: 4vh;
   overflow-y: hidden; 
 }
+
 
 
 
@@ -22,9 +23,9 @@ svg{
   
   .blob1-btn{
     $numOfBlobs: 4;
-    z-index: 1;
-    position: relative;
-    padding: 10px 46px;
+    z-index: 1; 
+    position: relative; 
+    padding: 10px 46px; 
     margin-bottom: 15px;
     text-align: center;
     text-transform: uppercase;
@@ -149,7 +150,7 @@ svg{
 
 
 cdk-virtual-scroll-viewport {
-  height: 70vh;
+  height: 74vh;
   width: 80vw;
   margin: 0 auto;
   display: flex;
@@ -174,6 +175,7 @@ cdk-virtual-scroll-viewport {
   button {
     margin: 0.7rem;
   }
+  
 
   .item-div {
     height: auto;
@@ -214,6 +216,108 @@ cdk-virtual-scroll-viewport {
 
   &::-webkit-scrollbar-thumb {
     background-color: rgb(231, 228, 224);
+    opacity: 0;
+    border-radius: 10px;
+    
+  }
+}
+
+.animate__animated.animate__slideInRight {
+  --animate-duration: 2s;
+}
+
+.box{
+  position:fixed;
+  height: 100%;
+  width:100%;
+  overflow-y:hidden;
+}
+
+.mydialog {
+  width: 50vw;
+}
+
+@media screen and (max-width: 40em) {
+  .mydialog {
+      width: 75vw;
+  }
+}
+
+cdk-virtual-scroll-viewport.theme-dark {
+  height: 74vh;
+  width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  list-style: none;
+  
+  .col {
+    padding: 0px !important;
+  }
+
+  .btn {
+    padding-left: 15%;
+    padding-right: 15%;
+  }    
+
+  .mr-07 {
+    margin-right: 0.7rem;
+  }
+
+  button {
+    margin: 0.7rem;
+  }
+  
+
+  .item-div {
+    height: auto;
+    margin: 3vh;
+    padding: 1.5vh;
+    background: #2f3033;
+    border-radius: 10px;
+    word-break: break-all;
+    color: white;
+    box-shadow: 2px 2px 2px 2px rgba($color: #888888, $alpha: 0.2);
+  }
+  .btn-outline-primary {
+    border-color: #00a8eb !important;
+    color: #00a8eb;
+}
+.btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary:visited{
+  background-color: #00a8eb;
+  color: white;
+}
+
+  // Bonus points
+  &::-webkit-scrollbar {
+    margin-left: 30px;
+    float: left;
+    // height: 75px;
+    width: 10px;
+    background: transparent;
+    overflow-y: scroll;
+    margin-bottom: 25px;
+    .cdk-virtual-scroll-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            height:30px;
+        }
+    }
+    .force-overflow {
+    min-height: 450px;
+    }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 5px;
+    margin-top:10px;
+    
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color:  #2f3033;
     opacity: 0;
     border-radius: 10px;
     
@@ -314,9 +418,47 @@ cdk-virtual-scroll-viewport {
     height: 0.1rem;
     z-index: 11004;
   }
+  
   }
 }
 
 .buttonclass{
   padding:0px;
+}
+
+.help {
+  position: relative;
+  display: inline-block;
+}
+
+.help .tooltiptext {
+  visibility: hidden;
+  width: 330px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  margin-left: -160px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.help .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.help:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
