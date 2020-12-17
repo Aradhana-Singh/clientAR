@@ -1,6 +1,15 @@
+<div  style="margin-top: 1rem; margin-left:1rem; width: 128px; height: 128px; cursor: pointer" [@themeState]= "state" (click)="setTheme()">
+	<div *ngIf = "storedTheme == 'theme-light'">
+		<img src="assets/images/sun1.png">
+	</div>
+	<div *ngIf = "storedTheme == 'theme-dark'">
+		<img src="assets/images/night1.png">
+	</div>
+</div>
 <div class="container">
+	
 	<div class="row ch">
-			<div class="content {{storedTheme}}">
+			<!-- <div class="content {{storedTheme}}">
 				<div class="content-box">
 					<div class="theme-switcher-wrap">		
 						<label
@@ -13,22 +22,9 @@
 						</label>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		<div class="text-typing">
 			<h1 class="mx-auto my-auto text-ocean"></h1>
-		  </div>
+		</div>
+	
 	</div>
-</div>
-
-
-
-
-
-
-
-
-	<!-- <a href="https://login.salesforce.com/services/oauth2/authorize?
-client_id=3MVG9n_HvETGhr3C21YA3Wd8zCW4pR2Ir9LH5wJcDYepa5rbaz8dUlP.TUncSKKDzBNIPfy98l.e4LWDF.3St&
-redirect_uri=http://localhost:8080/new&
-response_type=code">
-		Authorize Salesforce Org</a> -->

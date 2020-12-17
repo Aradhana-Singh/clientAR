@@ -85,7 +85,8 @@ import { OauthComponent } from './oauth/oauth.component';
 import { StoreModule } from '@ngrx/store';
 import {reducer} from './loadingbar/loadingbar.reducer';
 import { FilterPipe } from './deploy/filter.pipe';
-import { ShortPipe } from './deploy/short.pipe'
+import { ShortPipe } from './deploy/short.pipe';
+
 
 // import { BasicScrollComponent } from './basic-scroll/basic-scroll.component';
 // import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
