@@ -181,11 +181,13 @@ import { ShortPipe } from './deploy/short.pipe';
     MultiSelectModule,
     StoreModule.forRoot({ spinner: reducer })
   ],
-  providers: [ CookieService, AuthService, AuthGuard, {
-    provide : HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi   : true,
-  }],
+  providers: [ CookieService, AuthService, AuthGuard, 
+  //   {
+  //   provide : HTTP_INTERCEPTORS,
+  //   useClass: AuthInterceptor,
+  //   multi   : true,
+  // }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

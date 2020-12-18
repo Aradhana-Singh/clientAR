@@ -1,5 +1,5 @@
 import { CloseScrollStrategy } from '@angular/cdk/overlay';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -14,8 +14,8 @@ import { AuthService } from '../auth/auth.service';
 export class UserComponent implements OnInit {
   public firstName;
   public lastName;
-  public email:String;
-  public password:String;
+  public email:string;
+  public password:string;
   public loginBtn : boolean = false;
   public signUpBtn : boolean = true;
   public buttonClick = false;
@@ -37,16 +37,20 @@ export class UserComponent implements OnInit {
       "username": this.email,
       "password": this.password
     };
-    let commiturl = this.defaulturl.concat('user/login'); 
-    this.http.post<any>(commiturl,payload).subscribe(
-      data => {
+    let commiturl = this.defaulturl.concat('auth/local'); 
+    this.http.post<any>(commiturl,payload, {observe: 'response'}).subscribe(
+      resp => {
+        
+        let data = resp.body;
+        // console.log(this.cookieService.get("jwt"));
         this.cookieService.set("token",data.token);
-        console.log(data.token);
+        
+        // console.log(data.token);
         this.messageService.add({severity: "success", summary:'Success', detail:'Successfully Logged in'});
         this.buttonClick = true;
         this.buttonClick = false;
         this.router.navigate(['/home']);   
-      },
+      },  
       error => {
         console.error('Error', error);
         this.messageService.add({severity: "error", summary:'Error', detail:'Invalid Credentials'});
@@ -64,7 +68,7 @@ export class UserComponent implements OnInit {
     this.http.get<any>(commiturl).subscribe(
       data => {
         console.log('Success',data);
-        if(data == "-1"){
+        if(data.user_id == "-1"){
           // alert("Invalid Email");
           this.loginBtn = true;
           this.signUpBtn = true;
@@ -84,15 +88,27 @@ export class UserComponent implements OnInit {
     let payload = {
       "first_name": this.firstName,
       "last_name": this.lastName,
-      "email": this.email,
+      "username": this.email,
       "password": this.password
     };
+    // const formData = new FormData();
+    // formData.append("first_name", this.firstName);
+    // formData.append("last_name", this.lastName);
+    // formData.append("username", this.email);
+    // formData.append("password", this.password);
+
+    // console.log(payload);
     let commiturl = this.defaulturl.concat('user/sign-up');
     this.buttonClick = true;
-    this.http.post<any>(commiturl,payload).subscribe(
+
+    // let options = {
+    //   headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    // };
+
+    this.http.post<any>(commiturl, payload).subscribe(
       data => {
         // this.cookieService.set("user_id", data.id);
-        console.log(data.id);
+        console.log(data);
         this.buttonClick = false;
         this.messageService.add({severity: "success", summary:'Success', detail:'Successfully Signed Up'});
         this.index = 1;
