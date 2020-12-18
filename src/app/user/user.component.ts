@@ -37,15 +37,14 @@ export class UserComponent implements OnInit {
       "username": this.email,
       "password": this.password
     };
+    
     let commiturl = this.defaulturl.concat('auth/local'); 
-    this.http.post<any>(commiturl,payload, {observe: 'response'}).subscribe(
+    this.http.post<any>(commiturl,payload, {observe: 'response'
+     ,withCredentials: true
+    }).subscribe(
       resp => {
         
         let data = resp.body;
-        // console.log(this.cookieService.get("jwt"));
-        this.cookieService.set("token",data.token);
-        
-        // console.log(data.token);
         this.messageService.add({severity: "success", summary:'Success', detail:'Successfully Logged in'});
         this.buttonClick = true;
         this.buttonClick = false;
