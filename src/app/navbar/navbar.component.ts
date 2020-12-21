@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit, DoCheck {
   items: MenuItem[];
   @ViewChild('menu') menu: Menu;
  
-  getUser = "http://localhost:8764/miniar/user/get-user";
+  getUser = "http://localhost:8764/auth-service/user/get-user";
   addWebHook = "http://localhost:8764/miniar/org/add-webhook";
  
   public full_name = "";
@@ -32,20 +32,18 @@ export class NavbarComponent implements OnInit, DoCheck {
   getTheme(){
     this.storedTheme = localStorage.getItem('theme-color');
   }
-  
-  
  
   constructor(private authService: AuthService, private router: Router, private http:HttpClient, private messageService: MessageService, private store: Store<any>) { }
  
   getUserName() 
   {
-    let decoded_token = jwt_decode(this.authService.getToken());
-    let email = decoded_token["sub"];
+    // let decoded_token = jwt_decode(this.authService.getToken());
+    // let email = decoded_token["sub"];
  
-    let params = new HttpParams().set("email", email);
+    // let params = new HttpParams().set("email", email);
     // let full_name = "";
  
-    let response = this.http.get<any>(this.getUser,{withCredentials:true, params: params});
+    let response = this.http.get<any>(this.getUser,{withCredentials:true});
  
     response.subscribe((user)=>{
       this.full_name = user["first_name"] + " " + user["last_name"];
@@ -104,19 +102,12 @@ export class NavbarComponent implements OnInit, DoCheck {
     this.loadingbar$ = this.store.pipe(select(state => state.spinner.isOn));
     this.getUserName();
     this.retrieveSelected();
-      
-      
-}
-ngDoCheck(): void{
-  this.getTheme();
-}
+  }
 
+  ngDoCheck(): void{
+    this.getTheme();
+  }
 
-
-
-
-
- 
   addWebhookUrl()
   {
     this.progress = true;

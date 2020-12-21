@@ -18,7 +18,7 @@ export class UserComponent implements OnInit {
   public password:string;
   public loginBtn : boolean = false;
   public signUpBtn : boolean = true;
-  public buttonClick = false;
+  public showProgress = false;
   public index: number = 1;
   items: MenuItem[];
   public defaulturl ='http://localhost:8764/auth-service/';
@@ -29,31 +29,29 @@ export class UserComponent implements OnInit {
       {label: 'Angular.io', icon: 'pi pi-info', url: 'http://angular.io'},
       {separator:true},
       {label: 'Setup', icon: 'pi pi-cog', routerLink: ['/setup']}
-  ];
+    ];
+    
   }
   
   login(){
+    this.showProgress = true;
     let payload = {
       "username": this.email,
       "password": this.password
     };
     
     let commiturl = this.defaulturl.concat('auth/local'); 
-    this.http.post<any>(commiturl,payload, {observe: 'response'
-     ,withCredentials: true
-    }).subscribe(
-      resp => {
-        
-        let data = resp.body;
+    this.http.post<any>(commiturl,payload, {withCredentials: true, responseType: 'text' as 'json'}).subscribe(
+      data => {
+        console.log(data);
         this.messageService.add({severity: "success", summary:'Success', detail:'Successfully Logged in'});
-        this.buttonClick = true;
-        this.buttonClick = false;
+        this.showProgress = false;
         this.router.navigate(['/home']);   
       },  
       error => {
         console.error('Error', error);
         this.messageService.add({severity: "error", summary:'Error', detail:'Invalid Credentials'});
-    }
+      }
     );
   }
 
@@ -62,7 +60,7 @@ export class UserComponent implements OnInit {
   }
 
   validateUser(){
-    console.log(this.password + " " + this.email);
+    // console.log(this.password + " " + this.email);
     let commiturl = this.defaulturl.concat('user/check-existence?email=') + this.email; 
     this.http.get<any>(commiturl).subscribe(
       data => {
@@ -98,7 +96,7 @@ export class UserComponent implements OnInit {
 
     // console.log(payload);
     let commiturl = this.defaulturl.concat('user/sign-up');
-    this.buttonClick = true;
+    this.showProgress = true;
 
     // let options = {
     //   headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
@@ -108,7 +106,7 @@ export class UserComponent implements OnInit {
       data => {
         // this.cookieService.set("user_id", data.id);
         console.log(data);
-        this.buttonClick = false;
+        this.showProgress = false;
         this.messageService.add({severity: "success", summary:'Success', detail:'Successfully Signed Up'});
         this.index = 1;
       },
@@ -118,4 +116,5 @@ export class UserComponent implements OnInit {
       }
     ); 
   }
+  
 }

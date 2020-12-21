@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate {
     
   }
 
-  canActivate() {
+  async canActivate() {
   // canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     // return this.authService.isLoggedIn.pipe(
     //   take(1),
@@ -24,7 +24,10 @@ export class AuthGuard implements CanActivate {
     //     return true;
     //   })
     // );
-    if(this.authService.isUserLoggedIn()) {
+    
+    let tmp = await this.authService.isUserLoggedIn();
+    console.log(tmp);
+    if(tmp) {
       return true;
     }
     this.router.navigate(['/authenticate']);

@@ -2,8 +2,10 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } fr
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { AuthService } from './auth.service';
+// const {pipe} = require('rxjs/Rx');
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor 
@@ -29,5 +31,20 @@ export class AuthInterceptor implements HttpInterceptor
     });
 
     return next.handle(req);
+    // return next.handle(req)
+    // .pipe(
+    //   map((res: HttpResponse<any>) => {
+    //     if (res.status == 401)
+    //     {
+    //       this.authService.logout();
+    //     }
+    //     else if(res.status == 200)
+    //       this.authService.loggedIn(true);
+    //     else 
+    //       console.log(res.status);
+    //     return res;
+    //   })
+    // );
+    
   }
 }

@@ -132,7 +132,7 @@ export class CommitComponent implements OnInit {
       const formdata: FormData = new FormData();
       formdata.append('file', this.file);
       formdata.append('org_id', this.selectedOrg.org_id);
-      this.http.post("http://localhost:8764/miniar/git/addFile", formdata,{headers:{skip:"true"}}).subscribe(
+      this.http.post("http://localhost:8764/miniar/git/addFile", formdata,{headers:{skip:"true"}, withCredentials: true}).subscribe(
         (data)=>{
           console.log(data);
           this.messageService.add({severity: "success", summary:'File Uploaded'});

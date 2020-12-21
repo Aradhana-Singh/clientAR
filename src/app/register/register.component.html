@@ -18,7 +18,7 @@
 		<div class="col">
 			<div class="listHeader">
 				<label for="GitAcc">Git Account List</label>
-				<a class="btn btn-primary" [style]= "{'float':'right'}" href="https://github.com/login/oauth/authorize?client_id=6754f8f63720d9edbe8b&redirect_uri=http://locahost:4200/oauth/git&scope=repo user" role="button">+</a>
+				<a class="btn btn-primary" [style]= "{'float':'right'}" href="https://github.com/login/oauth/authorize?client_id=6754f8f63720d9edbe8b&redirect_uri=http://localhost:4200/oauth/git&scope=repo user" role="button">+</a>
 			</div>
 			<p-listbox id = "GitAcc" [options]="gitaccs" ngModel name="gitaccs" [(ngModel)]="selectedAcc" [metaKeySelection]="false"
 				[filter]="true" optionLabel="username" [listStyle]="{'max-height':'250px'}" [style]="{'max-width':'100%'}">
