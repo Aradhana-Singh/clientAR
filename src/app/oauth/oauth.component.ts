@@ -17,9 +17,9 @@ export class OauthComponent implements OnInit {
       let type = this.route.snapshot.params.type;
       let Url;
       if(type == "sf")
-        Url="http://localhost:8764/miniar/org/new-org";
+        Url="http://15.206.169.206:8764/miniar/org/new-org";
       else if(type == "git")
-        Url="http://localhost:8764/miniar/git/new-repo";
+        Url="http://15.206.169.206:8764/miniar/git/new-repo";
 
       let ps = new HttpParams().set("code",code); 
       this.http.get<any>(Url,{withCredentials:true,params:ps}).subscribe(

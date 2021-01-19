@@ -24,7 +24,7 @@ interface Repo{
 })
 
 export class CommitComponent implements OnInit {
-  public defaulturl ='http://localhost:8764/miniar/';
+  public defaulturl ='http://15.206.169.206:8764/miniar/';
   public listrepourl = this.defaulturl.concat('git/list-repos/') ;
   public sfurl = this.defaulturl.concat('org/list-orgs') ;
   public accurl = this.defaulturl.concat('git/list-accounts');
@@ -132,7 +132,7 @@ export class CommitComponent implements OnInit {
       const formdata: FormData = new FormData();
       formdata.append('file', this.file);
       formdata.append('org_id', this.selectedOrg.org_id);
-      this.http.post("http://localhost:8764/miniar/git/addFile", formdata,{headers:{skip:"true"}, withCredentials: true}).subscribe(
+      this.http.post("http://15.206.169.206:8764/miniar/git/addFile", formdata,{headers:{skip:"true"}, withCredentials: true}).subscribe(
         (data)=>{
           console.log(data);
           this.messageService.add({severity: "success", summary:'File Uploaded'});

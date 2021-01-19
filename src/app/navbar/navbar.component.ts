@@ -20,8 +20,8 @@ export class NavbarComponent implements OnInit, DoCheck {
   items: MenuItem[];
   @ViewChild('menu') menu: Menu;
  
-  getUser = "http://localhost:8764/auth-service/user/get-user";
-  addWebHook = "http://localhost:8764/miniar/org/add-webhook";
+  getUser = "http://15.206.169.206:8764/auth-service/user/get-user";
+  addWebHook = "http://15.206.169.206:8764/miniar/org/add-webhook";
  
   public full_name = "";
   public webhook_url = "";

@@ -73,7 +73,7 @@ export class DeployComponent implements OnInit {
   // public orgs: string [] = [];
   public orgs: Org[];
   public selectedOrgs: Org[];
-  public defaulturl = 'http://localhost:8764/miniar/';
+  public defaulturl = 'http://15.206.169.206:8764/miniar/';
   public sfurl = this.defaulturl.concat('org/list-orgs');
   public commithistoryurl = this.defaulturl.concat('git/commit-history');
   public deployUrl = this.defaulturl.concat('git/test-deploy');
